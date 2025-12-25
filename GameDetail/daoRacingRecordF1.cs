@@ -1,10 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlConnector;
 using Serilog;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
 
 namespace GameDetail
 {
@@ -24,36 +29,74 @@ namespace GameDetail
         public string RacingDate { get; set; } = string.Empty;
 
         public DateTime ArrivedDatetime { get; set; }
-
+        public string BgColor {  get; set; } = "Black";
     }
 
     public class objRacingRecordF1
     {
         List<daoRacingRecordF1> _reacrd_list = new List<daoRacingRecordF1>();
-
+        private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
         public void AddRecord(daoRacingRecordF1 record)
         {
             _reacrd_list.Add(record);
         }
 
-        public void InsertRecord()
+        public ObservableCollection<daoRacingRecordF1> Read(string RacingDate)
         {
+            string sql = "";
+            utility util = new utility();
+            using var conn = util.connectdb();
 
             try
             {
-                utility util = new utility();
-                using var conn = util.connectdb();
-                conn.Open();
+                sql = $"select * from racing_records_f1 where racing_date='{RacingDate}'";
+                using var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
+                using var reader = cmd.ExecuteReader();
 
-                foreach (var record in _reacrd_list)
+                if (reader.HasRows)
                 {
+                    // 讀取資料並且顯示出來
+                    while (reader.Read())
+                    {
+                        daoRacingRecordF1 record = new daoRacingRecordF1();
+                        record.Serialno1 = reader.GetInt32(reader.GetOrdinal("serialno1"));
+                        record.Serialno2 = reader.GetInt32(reader.GetOrdinal("serialno2"));
+                        record.Serialno3 = reader.GetInt32(reader.GetOrdinal("serialno3"));
+                        record.ClubName = reader.GetString(reader.GetOrdinal("club_name"));
+                        record.MemberNo= reader.GetString(reader.GetOrdinal("member_no"));
+                        record.RingId = reader.GetInt32(reader.GetOrdinal("ring_id"));
+                        record.RacingDate = reader.GetString(reader.GetOrdinal("racing_date"));
+                        record.ArrivedDatetime = reader.GetDateTime(reader.GetOrdinal("arrived_datetime"));
 
-                    string sql = @"
-                INSERT INTO racing_records_f1
-                (serialno1, serialno2, serialno3, club_name, member_no, ring_id, racing_date, arrived_datetime)
-                VALUES
-                (@serialno1, @serialno2, @serialno3, @club_name, @member_no, @ring_id, @racing_date, @arrived_datetime);
-                ";
+                        myRecord.Add(record);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
+
+            return myRecord;
+        }
+
+        public void InsertRecord()
+        {
+
+            string sql = "";
+            utility util = new utility();
+            using var conn = util.connectdb();
+            //conn.Open();
+
+            foreach (var record in _reacrd_list)
+            {
+                try
+                {
+                    sql = @"
+                    INSERT INTO racing_records_f1
+                    (serialno1, serialno2, serialno3, club_name, member_no, ring_id, racing_date, arrived_datetime)
+                    VALUES
+                    (@serialno1, @serialno2, @serialno3, @club_name, @member_no, @ring_id, @racing_date, @arrived_datetime);
+                    ";
 
                     using var cmd = new MySqlCommand(sql, conn);
 
@@ -68,11 +111,13 @@ namespace GameDetail
 
                     cmd.ExecuteNonQuery();
                 }
+                catch (Exception ex)
+                {
+                    Log.Debug("sql: " + sql);
+                    Log.Debug("InsertRecord Error: " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Log.Debug("InsertRecord Error: " + ex.Message);
-            }
+            
             
         }
     }

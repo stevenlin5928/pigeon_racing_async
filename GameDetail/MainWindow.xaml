@@ -7,12 +7,95 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <Button x:Name="Btn_Read" Content="讀取成績" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Read_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="Btn_Cookie" Content="設定Cookie" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Cookie_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
-        <Button x:Name="Btn_Cls" Content="clean" HorizontalAlignment="Left" Margin="690,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Clean_Click"/>
+        <Button x:Name="Btn_Read" Content="同步成績" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Read_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="Btn_Cookie" Content="設定Cookie" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Cookie_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_Cls" Content="clean" HorizontalAlignment="Left" Margin="855,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_Load" Content="載入成績" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Load_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
 
-        <ListBox x:Name="Listbox_Log" Margin="0,48,0,0" />
-        <TextBox x:Name="Txt_CookieName" HorizontalAlignment="Left" Margin="225,10,0,0" TextWrapping="Wrap" Text="ASPSESSIONIDSQQQSCCA" VerticalAlignment="Top" Width="180" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
-        <TextBox x:Name="Txt_CookieValue" HorizontalAlignment="Left" Margin="410,10,0,0" TextWrapping="Wrap" Text="GDPPEADCBJHANCALEKHCENMP" VerticalAlignment="Top" Width="265" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
+        <ListBox x:Name="Listbox_Log" Width ="460" HorizontalAlignment="Right" Margin="0,48,10,10" />
+        <TextBox x:Name="Txt_CookieName" HorizontalAlignment="Left" Margin="389,10,0,0" TextWrapping="Wrap" Text="ASPSESSIONIDASRRSBRD" VerticalAlignment="Top" Width="180" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
+        <TextBox x:Name="Txt_CookieValue" HorizontalAlignment="Left" Margin="574,10,0,0" TextWrapping="Wrap" Text="DOMFKMKCFDIOEJDOLJJAFNGB" VerticalAlignment="Top" Width="265" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
+        <ComboBox x:Name="comboBox_date" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
+        <ListView x:Name="listView_record"  Margin="10,48,480,10" FontSize="14" FontFamily="Arial Black">
+            <ListView.Resources>
+                <!-- 加入格線樣式 -->
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+
+                <Style TargetType="ListViewItem">
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </ListView.Resources>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="序號" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Serialno1}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="鴿會" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ClubName}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="會員" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding MemberNo}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="腳環號碼" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding RingId}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="日期" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding RacingDate}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="感應時間" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ArrivedDatetime}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

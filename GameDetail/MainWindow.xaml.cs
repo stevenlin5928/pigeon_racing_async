@@ -2,6 +2,7 @@
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -27,9 +28,10 @@ namespace GameDetail
     {
         private static string mycookie = "";
         private static string mycookie_v = "";
-
+        private static string myDate = "";
         private static string html_head = "";
-        private static string html_footer = "";
+
+        private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
 
         private static int pigeon_count = 0;
         private static int member_count = 0;
@@ -55,7 +57,13 @@ namespace GameDetail
 
             //utility u = new utility();
             //u.connectdb();
+            comboBox_date.Items.Add(DateTime.Today.ToString("yyyy/MM/dd"));
+            comboBox_date.Items.Add(DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd"));
+            comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
+            comboBox_date.SelectedIndex = 0;
+            //this.WindowState = WindowState.Maximized;
 
+            
         }
 
         private void disp(string msg)
@@ -70,6 +78,10 @@ namespace GameDetail
         {
             mycookie = Txt_CookieName.Text;
             mycookie_v = Txt_CookieValue.Text;
+            myDate = comboBox_date.Text;
+
+
+            
 
             Task.Run(() =>
             {
@@ -77,17 +89,19 @@ namespace GameDetail
              
                 procHtml(1);
 
+                int total_pages = (int)Math.Ceiling((double)pigeon_count / 1000);
+                for (int page_index = 2; page_index <= total_pages+1; page_index++)
+                {
+                    Thread.Sleep(3000);
+                    procHtml(page_index);
+                }
+
                 disp("讀取比賽資料結束...");
                 
             });
-            
 
-            //int total_pages = (int)Math.Ceiling((double)pigeon_count / 100);
-            //for (int page_index = 2; page_index <= total_pages; page_index++)
-            //{
-            //    Thread.Sleep(5000);
-            //    procHtml(page_index);
-            //}
+
+            
         }
 
 
@@ -95,7 +109,7 @@ namespace GameDetail
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            var url = $"http://www.087780212.tw/msg/dailyGameDetail.asp?udate=2025/12/25&ucgp=215&uhouse=0&page={page_index}";
+            var url = $"http://www.087780212.tw/msg/dailyGameDetail.asp?udate={myDate}&ucgp=215&uhouse=0&page={page_index}&upgs=1000";
 
             // 建立 HttpClient + CookieContainer
             var handler = new HttpClientHandler
@@ -166,6 +180,8 @@ namespace GameDetail
 
         private void ParsorHtml_2(List<string> _list)
         {
+            objRacingRecordF1 obj = new objRacingRecordF1();
+
             for (int index = 1; index < _list.Count; index++)
             {
                 string s = _list[index];
@@ -174,22 +190,29 @@ namespace GameDetail
                 var tds = doc.DocumentNode.SelectNodes("//td");
                 if (tds != null )
                 {
-                    string SerialNo = tds[0].InnerText.Trim();
-                    string SerialNo2 = tds[1].InnerText.Trim();
-                    string SerialNo3 = tds[2].InnerText.Trim();
-                    string ClubName = tds[3].InnerText.Trim();
-                    string Member = tds[4].InnerText.Trim();
-                    string RingID = tds[5].InnerText.Trim();
-                    string Date1 = tds[6].InnerText.Trim();
+                    daoRacingRecordF1 record = new daoRacingRecordF1();
+
+                    record.Serialno1 = int.Parse(tds[0].InnerText.Trim());
+                    record.Serialno2 = int.Parse(tds[1].InnerText.Trim());
+                    record.Serialno3 = int.Parse(tds[2].InnerText.Trim());
+                    record.ClubName = tds[3].InnerText.Trim();
+                    record.MemberNo = tds[4].InnerText.Trim();
+                    record.RingId = int.Parse(tds[5].InnerText.Trim());
+                    record.RacingDate = tds[6].InnerText.Trim();
                     string Time1 = tds[7].InnerText.Trim();
                     //06時42分29.14秒
-                    string myDatetime = Date1 + " " + Time1.Replace("時", ":").Replace("分", ":").Replace("秒", "");
+                    string myDatetime = record.RacingDate + " " + Time1.Replace("時", ":").Replace("分", ":").Replace("秒", "");
                     DateTime dt = DateTime.ParseExact(myDatetime, "yyyy/MM/dd HH:mm:ss.ff", null);
+                    record.ArrivedDatetime = dt;
 
-                    disp($"序: {SerialNo}, 順序: {SerialNo2}, 序號2: {SerialNo3}, 鴿會: {ClubName}, 會員: {Member}, " +
-                        $"腳環號碼: {RingID}, 日期: {Date1}-{Time1}");
+                    disp($"序: {record.Serialno1}, 順序: {record.Serialno2}, 序號2: {record.Serialno3}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +
+                        $"腳環號碼: {record.RingId}, 日期: {record.RacingDate}-{dt.ToString("yyyy/MM/dd HH:mm:ss.ff")}");
+
+                    obj.AddRecord( record );
                 }
             }
+
+            obj.InsertRecord();
         }
 
         // 解析表頭-鴿子數量
@@ -244,6 +267,17 @@ namespace GameDetail
         {
             Listbox_Log.Items.Clear();
             _list.Clear();
+            myRecord.Clear();
+        }
+
+        private void Btn_Load_Click(object sender, RoutedEventArgs e)
+        {
+            myDate = comboBox_date.Text;
+
+            objRacingRecordF1 objRacing = new objRacingRecordF1();
+            myRecord = objRacing.Read(myDate);
+
+            listView_record.ItemsSource = myRecord;
         }
     }
 }
