@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Github\\pigeon_racing_async\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\daoracingrecordf1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\daoracingrecordf1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "GameDetail\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
+              "RelativeToolTip": "GameDetail\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAgwKgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T09:43:54.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "daoRacingRecordF1.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
+              "RelativeDocumentMoniker": "GameDetail\\daoRacingRecordF1.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
+              "RelativeToolTip": "GameDetail\\daoRacingRecordF1.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAAD4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T09:30:29.107Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
