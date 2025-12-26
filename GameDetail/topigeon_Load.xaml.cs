@@ -111,6 +111,14 @@ namespace GameDetail
             disp("Downloading page...");
 
             var html = client.GetStringAsync(url).Result;
+
+            //查無資料
+            if(html.Contains("查無資料"))
+            {
+                disp($"Date: {myDate}, 查無資料！");
+                return;
+            }
+
             string tmp = "<table id=\"resultdata\" class=\"table table-striped table-borderless table-header-bg table-vcenter\"  width=\"100%\">";
 
             int _index = html.IndexOf(tmp);
