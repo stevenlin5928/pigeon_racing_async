@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\pigeon_racing_async\\GameDetail\\GameDetail.csproj": {}
+    "D:\\Github\\pigeon_racing_async\\GameDetail\\GameDetail.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\pigeon_racing_async\\GameDetail\\GameDetail.csproj": {
+    "D:\\Github\\pigeon_racing_async\\GameDetail\\GameDetail.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\pigeon_racing_async\\GameDetail\\GameDetail.csproj",
+        "projectUniqueName": "D:\\Github\\pigeon_racing_async\\GameDetail\\GameDetail.csproj",
         "projectName": "GameDetail",
-        "projectPath": "D:\\GitHub\\pigeon_racing_async\\GameDetail\\GameDetail.csproj",
+        "projectPath": "D:\\Github\\pigeon_racing_async\\GameDetail\\GameDetail.csproj",
         "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\pigeon_racing_async\\GameDetail\\obj\\",
+        "outputPath": "D:\\Github\\pigeon_racing_async\\GameDetail\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
           "C:\\Users\\steve\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,6 +28,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "D:\\Github\\Amkor_Warehouse\\eGateSystem": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +47,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -99,7 +101,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

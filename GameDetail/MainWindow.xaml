@@ -8,13 +8,14 @@
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
         <Button x:Name="Btn_Read" Content="同步成績" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Read_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="Btn_Cookie" Content="設定Cookie" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Cookie_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <Button x:Name="Btn_Cls" Content="clean" HorizontalAlignment="Left" Margin="855,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <Button x:Name="Btn_Load" Content="載入成績" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Load_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="Btn_Cookie" Content="設定Cookie" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Cookie_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
 
         <ListBox x:Name="Listbox_Log" Width ="460" HorizontalAlignment="Right" Margin="0,48,10,10" />
-        <TextBox x:Name="Txt_CookieName" HorizontalAlignment="Left" Margin="389,10,0,0" TextWrapping="Wrap" Text="ASPSESSIONIDASRRSBRD" VerticalAlignment="Top" Width="180" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
-        <TextBox x:Name="Txt_CookieValue" HorizontalAlignment="Left" Margin="574,10,0,0" TextWrapping="Wrap" Text="DOMFKMKCFDIOEJDOLJJAFNGB" VerticalAlignment="Top" Width="265" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
+        <TextBox x:Name="Txt_CookieName" HorizontalAlignment="Left" Margin="389,10,0,0" TextWrapping="Wrap" Text="ASPSESSIONIDAQTTSDQD" VerticalAlignment="Top" Width="180" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
+        <TextBox x:Name="Txt_CookieValue" HorizontalAlignment="Left" Margin="574,10,0,0" TextWrapping="Wrap" Text="DMFDJCNCABNIFKNIIFCHPAIN" VerticalAlignment="Top" Width="265" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
         <ComboBox x:Name="comboBox_date" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
         <ListView x:Name="listView_record"  Margin="10,48,480,10" FontSize="14" FontFamily="Arial Black">
             <ListView.Resources>
@@ -34,16 +35,26 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="序號" Width="100">
+                    <GridViewColumn Header="順序" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Serialno1}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                    <TextBlock Text="{Binding Serialno2}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
+                    <GridViewColumn Header="序號" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Serialno3}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
                     <GridViewColumn Header="鴿會" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
