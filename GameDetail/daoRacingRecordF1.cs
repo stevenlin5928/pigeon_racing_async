@@ -1,14 +1,7 @@
-﻿using MySql.Data.MySqlClient;
-using MySqlConnector;
+﻿//using Microsoft.Data.SqlClient;
 using Serilog;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media;
 using MySqlCommand = MySql.Data.MySqlClient.MySqlCommand;
 
 namespace GameDetail
@@ -27,9 +20,11 @@ namespace GameDetail
 
         // racing_date 是 varchar(12)，保持 string
         public string RacingDate { get; set; } = string.Empty;
+        public string feet_no { get; set; } = "";
 
         public string ArrivedDatetime { get; set; } = string.Empty;
-        public string BgColor {  get; set; } = "Black";
+        public string BgColor {  get; set; } = "white";
+        public string fgColor { get; set; } = "Black";
     }
 
     public class objRacingRecordF1
@@ -41,7 +36,7 @@ namespace GameDetail
             _reacrd_list.Add(record);
         }
 
-        public ObservableCollection<daoRacingRecordF1> Read(string RacingDate)
+        public ObservableCollection<daoRacingRecordF1> Read(string RacingDate, int serial3, string club_name, string member_no)
         {
             string sql = "";
             utility util = new utility();
@@ -49,7 +44,18 @@ namespace GameDetail
 
             try
             {
-                sql = $"select * from racing_records_f1 where racing_date='{RacingDate}'";
+                if(serial3 == 0)
+                    serial3 = 9999;
+
+                if (member_no != "")
+                {
+                    sql = $"select * from vw_racing_records_f1 where racing_date='{RacingDate}' AND serialno3 <={serial3} AND club_name='{club_name}' AND member_no='{member_no}'";
+                }
+                else
+                {
+                    sql = $"select * from vw_racing_records_f1 where racing_date='{RacingDate}' AND serialno3 <={serial3} AND club_name='{club_name}'";
+                }
+                    
                 using var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
                 using var reader = cmd.ExecuteReader();
 
@@ -66,8 +72,12 @@ namespace GameDetail
                         record.MemberNo= reader.GetString(reader.GetOrdinal("member_no"));
                         record.RingId = reader.GetInt32(reader.GetOrdinal("ring_id"));
                         record.RacingDate = reader.GetString(reader.GetOrdinal("racing_date"));
-                        record.ArrivedDatetime = reader.GetString(reader.GetOrdinal("arrived_datetime"));
+                        //record.feet_no = reader.GetString(reader.GetOrdinal("feet_no"));
+                        record.feet_no = SafeGetString(reader, "feet_no");
 
+                        record.ArrivedDatetime = reader.GetString(reader.GetOrdinal("arrived_datetime"));
+                        if(record.Serialno3 == 1)
+                            record.BgColor = Brushes.Yellow.ToString();
                         myRecord.Add(record);
                     }
                 }
@@ -78,6 +88,13 @@ namespace GameDetail
 
             return myRecord;
         }
+
+        public string SafeGetString(MySql.Data.MySqlClient.MySqlDataReader reader, string column)
+        {
+            int idx = reader.GetOrdinal(column);
+            return reader.IsDBNull(idx) ? "" : reader.GetString(idx);
+        }
+
 
         public int GetRecordCount(string RacingDate, string clubname)
         {

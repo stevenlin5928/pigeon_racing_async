@@ -44,7 +44,7 @@ namespace GameDetail
             comboBox_date.Items.Add(DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd"));
             comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
             comboBox_date.SelectedIndex = 0;
-
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         private void disp(string msg)
         {

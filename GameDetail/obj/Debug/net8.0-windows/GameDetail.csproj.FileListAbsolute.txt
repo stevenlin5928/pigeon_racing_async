@@ -129,3 +129,5 @@ D:\GitHub\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\runtimes\win\l
 D:\GitHub\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\topigeon_Load.g.cs
 D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\topigeon_Load.baml
+D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\ld_Load.g.cs
+D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\ld_Load.baml

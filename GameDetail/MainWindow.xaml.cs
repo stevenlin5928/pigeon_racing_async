@@ -26,18 +26,8 @@ namespace GameDetail
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string mycookie = "";
-        private static string mycookie_v = "";
         private static string myDate = "";
-        private static string html_head = "";
-
         private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
-
-        private static int pigeon_count = 0;
-        private static int member_count = 0;
-        int record_count; // db 中已存在的資料筆數
-
-        List<string> _list = new List<string>();
 
         public MainWindow()
         {
@@ -62,243 +52,81 @@ namespace GameDetail
             comboBox_date.Items.Add(DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd"));
             comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
             comboBox_date.SelectedIndex = 0;
-            //this.WindowState = WindowState.Maximized;
+
+            comboBox_club.Items.Add("台南迎勝");
+            comboBox_club.Items.Add("屏東青田(春)");
+            comboBox_club.SelectedIndex = 0;
 
             
+            comboBox_dispsn.Items.Add("3");
+            comboBox_dispsn.Items.Add("4");
+            comboBox_dispsn.Items.Add("5");
+            comboBox_dispsn.Items.Add("6");
+            comboBox_dispsn.Items.Add("7");
+            comboBox_dispsn.Items.Add("8");
+            comboBox_dispsn.Items.Add("9");
+            comboBox_dispsn.Items.Add("10");
+            comboBox_dispsn.Items.Add("0");
+            comboBox_dispsn.SelectedIndex = 0;
+
+            this.WindowState = WindowState.Maximized;
+
+            Btn_Load.Foreground = Brushes.Blue;
+
+            Txt_memberNo.Text = "";
         }
 
         private void disp(string msg)
         {
             this.Dispatcher.Invoke(() =>
             {
-                Listbox_Log.Items.Add(msg);
-            });
-        }
-
-        private void Btn_Read_Click(object sender, RoutedEventArgs e)
-        {
-            mycookie = Txt_CookieName.Text;
-            mycookie_v = Txt_CookieValue.Text;
-            myDate = comboBox_date.Text;
-
-            record_count = 0;
-            objRacingRecordF1 objRacing = new objRacingRecordF1();
-            record_count = objRacing.GetRecordCount(myDate, "屏東青田(春)");
-            disp(myDate + " 已有 " + record_count + " 筆資料");
-
-
-            Task.Run(() =>
-            {
-                disp("開始讀取比賽資料...");
-                
-                procHtml(1, true);
-
-                int start_index = (record_count / 1000) + 1;
-                int stop_index = (pigeon_count / 1000) + 1;
-                //int total_pages = (int)Math.Ceiling((double)pigeon_count / 1000);
-                for (int index = start_index; index <= stop_index; index++)
-                {
-                    Thread.Sleep(3000);
-                    procHtml(index, false);
-                }
-
-                disp("讀取比賽資料結束...");
                 
             });
-
-
-            
-        }
-
-
-        private void procHtml(int page_index, bool isCalPage)
-        {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            int data_count = 1000;
-            if (isCalPage == true)
-            {
-                //計算頁數
-                data_count = 5;
-            }
-
-
-            var url = $"http://www.087780212.tw/msg/dailyGameDetail.asp?udate={myDate}&ucgp=215&uhouse=0&page={page_index}&upgs={data_count}";
-
-            // 建立 HttpClient + CookieContainer
-            var handler = new HttpClientHandler
-            {
-                UseCookies = true,
-                CookieContainer = new CookieContainer(),
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            };
-
-
-            var client = new HttpClient(handler);
-            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
-            client.DefaultRequestHeaders.Add("Referer", "http://www.087780212.tw/msg/main.asp");
-
-            // ★★★ 把瀏覽器的 Cookie 填進來 ★★★
-            handler.CookieContainer.Add(
-                new Uri("http://www.087780212.tw"),
-                new Cookie(mycookie, mycookie_v)
-            //new Cookie("ASPSESSIONIDSQQQSCCA", "GDPPEADCBJHANCALEKHCENMP")
-            );
-
-            handler.CookieContainer.Add(
-                new Uri("http://www.087780212.tw"),
-                new Cookie("timeState", "1")
-            );
-
-            disp("Downloading page...");
-
-            var html = client.GetStringAsync(url).Result;
-            var newHtml=html.Replace("bgcolor='#EEEEFF", "bgcolor='#FFFFFF");
-
-            if(html.Contains("default.asp") == true)
-            {
-                disp("❌ Cookie 已失效，請重新取得 Cookie");
-                return;
-            }
-            
-            _list = newHtml.Split("<TR bgcolor='#FFFFFF' >").ToList();
-
-            html_head = _list[0];
-            //html_footer = _list[_list.Count - 1];
-
-            for (int index = 1;index < _list.Count; index++)
-            {
-                if(index == _list.Count - 1)
-                {
-                    string s = _list[index];
-                    int _i = s.IndexOf("\n");
-                    s = s.Substring(0, _i);
-                    _list[index] = s;
-                    //Listbox_Log.Items.Add(s);
-                    break;
-                }
-                //Listbox_Log.Items.Add(_list[index]);
-            }
-
-            parsorHead();
-
-            if (isCalPage == true)
-            {
-                return;
-            }
-                
-            ParsorHtml_2(_list);
-
-            if (_list.Count < 1)
-            {
-                disp("❌ 無資料");
-                return;
-            }
-
-        }
-
-        private void ParsorHtml_2(List<string> _list)
-        {
-            objRacingRecordF1 obj = new objRacingRecordF1();
-
-            for (int index = 1; index < _list.Count; index++)
-            {
-                string s = _list[index];
-                var doc = new HtmlAgilityPack.HtmlDocument();
-                doc.LoadHtml(s);
-                var tds = doc.DocumentNode.SelectNodes("//td");
-                if (tds != null )
-                {
-                    daoRacingRecordF1 record = new daoRacingRecordF1();
-
-                    record.Serialno1 = 0;
-                    record.Serialno2 = int.Parse(tds[1].InnerText.Trim());
-                    record.Serialno3 = int.Parse(tds[2].InnerText.Trim());
-                    record.ClubName = tds[3].InnerText.Trim();
-                    record.MemberNo = tds[4].InnerText.Trim();
-                    record.RingId = int.Parse(tds[5].InnerText.Trim());
-                    record.RacingDate = tds[6].InnerText.Trim();
-                    string Time1 = tds[7].InnerText.Trim();
-                    //06時42分29.14秒
-                    //string myDatetime = record.RacingDate + " " + Time1.Replace("時", ":").Replace("分", ":").Replace("秒", "");
-                    //DateTime dt = DateTime.ParseExact(myDatetime, "yyyy/MM/dd HH:mm:ss.ff", null);
-                    record.ArrivedDatetime = tds[7].InnerText.Trim();
-
-                    if (record.Serialno2 < record_count)
-                        continue;
-
-                    disp($"序: {record.Serialno1}, 順序: {record.Serialno2}, 序號2: {record.Serialno3}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +
-                        $"腳環號碼: {record.RingId}, 日期: {record.RacingDate}-{record.ArrivedDatetime}");
-                    
-                    obj.AddRecord( record );
-                }
-            }
-
-            obj.InsertRecord();
-        }
-
-        // 解析表頭-鴿子數量
-        private void parsorHead()
-        {
-            string keyword = "本日共歸返";
-            int index = _list[0].IndexOf(keyword);
-            int index2 = _list[0].IndexOf("\n", index);
-            string head = _list[0].Substring(index+keyword.Length, index2-index-keyword.Length-1);
-            // <font color='#800000'>138</font> 舍  <font color='#800000'>4854</font> 鴿</font>
-            head = head.Replace("<font color='#800000'>", "").Replace("</font>", "").Trim();
-            //138 舍  4875 鴿
-            head = head.Replace(" ", "").Replace("舍",",").Replace("鴿", "");
-
-            string[] parts = head.Split(',');
-            head = $"本日共歸返 {parts[0]} 舍, {parts[1]} 鴿";
-
-            pigeon_count = int.Parse(parts[1]);
-            member_count = int.Parse(parts[0]);
-
-            disp(head);
-            disp($"pigeon_count:{pigeon_count}, member_count: {member_count}");
         }
 
         private void Btn_Cookie_Click(object sender, RoutedEventArgs e)
         {
-            var handler = new HttpClientHandler
-            {
-                UseCookies = true,
-                CookieContainer = new CookieContainer()
-            };
+            //var handler = new HttpClientHandler
+            //{
+            //    UseCookies = true,
+            //    CookieContainer = new CookieContainer()
+            //};
 
-            var client = new HttpClient(handler);
+            //var client = new HttpClient(handler);
 
-            // 送出登入或一般請求
-            var response = client.GetAsync("http://www.087780212.tw/msg/login_pre.asp").Result;
+            //// 送出登入或一般請求
+            //var response = client.GetAsync("http://www.087780212.tw/msg/login_pre.asp").Result;
 
-            // 抓 Cookie
-            var cookies = handler.CookieContainer.GetCookies(new Uri("http://www.087780212.tw"));
-            //mycookie = cookies["ASPSESSIONIDQQQQRACD"].Value;
-            foreach (Cookie c in cookies)
-            {
-                mycookie= c.Name;
-                //mycookie_v= c.Value;
-                Listbox_Log.Items.Add($"{c.Name} = {c.Value}");
-            }
+            //// 抓 Cookie
+            //var cookies = handler.CookieContainer.GetCookies(new Uri("http://www.087780212.tw"));
+            ////mycookie = cookies["ASPSESSIONIDQQQQRACD"].Value;
+            //foreach (Cookie c in cookies)
+            //{
+            //    mycookie= c.Name;
+            //    //mycookie_v= c.Value;
+            //    Listbox_Log.Items.Add($"{c.Name} = {c.Value}");
+            //}
 
-            Txt_CookieName.Text = mycookie;
-            mycookie_v = Txt_CookieValue.Text;
+            //Txt_CookieName.Text = mycookie;
+            //mycookie_v = Txt_CookieValue.Text;
         }
 
         private void Btn_Clean_Click(object sender, RoutedEventArgs e)
         {
-            Listbox_Log.Items.Clear();
-            _list.Clear();
             myRecord.Clear();
+            Lbl_Message.Content = "";
         }
 
         private void Btn_Load_Click(object sender, RoutedEventArgs e)
         {
             myDate = comboBox_date.Text;
+            int serial3 = int.Parse ( comboBox_dispsn.Text);
+            string club_name = comboBox_club.Text;
+            string member_no = Txt_memberNo.Text.Trim();
 
             objRacingRecordF1 objRacing = new objRacingRecordF1();
-            myRecord = objRacing.Read(myDate);
-
+            myRecord = objRacing.Read(myDate, serial3, club_name, member_no);
+            Lbl_Message.Content = $"{myDate} {club_name} 前 {serial3} 名 資料筆數 {myRecord.Count}";
             listView_record.ItemsSource = myRecord;
         }
 
@@ -306,6 +134,25 @@ namespace GameDetail
         {
             topigeon_Load topigeonWindow = new topigeon_Load();
             topigeonWindow.Show();
+        }
+
+        private void Btn_ld_Click(object sender, RoutedEventArgs e)
+        {
+            ld_Load ld_Load = new ld_Load();
+            ld_Load.Show();
+        }
+
+        private void MemberNo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var tb = sender as TextBlock;
+            var data = tb.DataContext;   // 就是該列的資料物件
+
+            // 你可以直接取出資料
+            // var item = (YourModel)data;
+
+            //MessageBox.Show("你點了：" + tb.Text);
+
+            Txt_memberNo.Text = tb.Text;
         }
     }
 }

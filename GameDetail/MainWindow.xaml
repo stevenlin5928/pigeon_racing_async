@@ -7,17 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920">
     <Grid>
-        <Button x:Name="Btn_Read" Content="同步成績" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Read_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="Btn_Cls" Content="clean" HorizontalAlignment="Left" Margin="855,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
-        <Button x:Name="Btn_Load" Content="載入成績" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Load_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
-        <Button x:Name="Btn_Cookie" Content="設定Cookie" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Cookie_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
-        <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="960,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <ComboBox x:Name="comboBox_date" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
+        <Button x:Name="Btn_Load" Content="載入成績" HorizontalAlignment="Left" Margin="150,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Load_Click" FontFamily="Arial Black" FontWeight="Bold" FontSize="14"/>
+        <ComboBox x:Name="comboBox_club" HorizontalAlignment="Left" Margin="260,40,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="Txt_memberNo" HorizontalAlignment="Left" Margin="510,40,0,0" TextWrapping="Wrap" Text="會員號" VerticalAlignment="Top" Width="107" Height="30" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <ComboBox x:Name="comboBox_dispsn" HorizontalAlignment="Left" Margin="400,40,0,0" VerticalAlignment="Top" Width="100" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
 
-        <ListBox x:Name="Listbox_Log" Width ="460" HorizontalAlignment="Right" Margin="0,48,10,10" />
-        <TextBox x:Name="Txt_CookieName" HorizontalAlignment="Left" Margin="389,10,0,0" TextWrapping="Wrap" Text="ASPSESSIONIDAQTTSDQD" VerticalAlignment="Top" Width="180" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
-        <TextBox x:Name="Txt_CookieValue" HorizontalAlignment="Left" Margin="574,10,0,0" TextWrapping="Wrap" Text="DMFDJCNCABNIFKNIIFCHPAIN" VerticalAlignment="Top" Width="265" Height="30" VerticalContentAlignment="Center" FontSize="12" FontFamily="Microsoft YaHei UI" FontWeight="Bold"/>
-        <ComboBox x:Name="comboBox_date" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="131" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
-        <ListView x:Name="listView_record"  Margin="10,48,480,10" FontSize="14" FontFamily="Arial Black">
+        <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="960,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_ld" Content="開啟嶺東" HorizontalAlignment="Left" Margin="1080,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_ld_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_Cls" Content="clean" HorizontalAlignment="Left" Margin="855,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+
+        <ListView x:Name="listView_record"  Margin="10,112,10,10" FontSize="16">
             <ListView.Resources>
                 <!-- 加入格線樣式 -->
                 <Style TargetType="GridViewColumnHeader">
@@ -39,7 +39,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Serialno2}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                    <TextBlock Text="{Binding Serialno2}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -49,47 +49,60 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Serialno3}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                    <TextBlock Text="{Binding Serialno3}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="鴿會" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ClubName}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="會員" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding MemberNo}" 
+                                               TextWrapping="Wrap" 
+                                               MouseLeftButtonDown="MemberNo_MouseLeftButtonDown"
+                                               Background="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="腳環號" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding RingId}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="腳環全號" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding feet_no}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     
-                    <GridViewColumn Header="鴿會" Width="200">
+                    <GridViewColumn Header="日期" Width="140">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding ClubName}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="會員" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding MemberNo}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="腳環號碼" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding RingId}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="日期" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding RacingDate}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                    <TextBlock Text="{Binding RacingDate}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -99,14 +112,19 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding ArrivedDatetime}" TextWrapping="Wrap" Foreground="{Binding BgColor}"/>
+                                    <TextBlock Text="{Binding ArrivedDatetime}" TextWrapping="Wrap" Background="{Binding BgColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
+                    
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="日期"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="131" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="鴿會" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="131" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="顯示前幾羽" HorizontalAlignment="Left" Margin="400,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label Content="會員號" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="107" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label x:Name="Lbl_Message" Content="message"  HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="1900" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>
