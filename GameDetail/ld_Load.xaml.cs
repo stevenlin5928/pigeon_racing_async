@@ -188,7 +188,7 @@ namespace GameDetail
                     record.ClubName = tds[3].InnerText.Trim();
                     record.MemberNo = tds[4].InnerText.Trim();
                     record.RingId = int.Parse(tds[5].InnerText.Trim());
-                    record.RacingDate = tds[6].InnerText.Trim();
+                    record.RacingDate = myDate;// tds[6].InnerText.Trim();
                     string Time1 = tds[7].InnerText.Trim();
                     //06時42分29.14秒
                     //string myDatetime = record.RacingDate + " " + Time1.Replace("時", ":").Replace("分", ":").Replace("秒", "");

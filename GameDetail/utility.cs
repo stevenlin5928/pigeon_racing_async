@@ -21,10 +21,14 @@ namespace GameDetail
 
         public MySqlConnection connectdb()
         {
-            string dbHost = "202.39.254.129";
-            string dbPort = "13316";
-            string dbUser = "root";
-            string dbPass = "yhiot@2026";
+            //string dbHost = "202.39.254.129";
+            //string dbPort = "13316";
+            //string dbUser = "root";
+            //string dbPass = "yhiot@2026";
+            string dbHost = "106.52.12.118";
+            string dbPort = "9982";
+            string dbUser = "yya";
+            string dbPass = "91310120MADX94GG3M";
             string dbName = "pigeon_system_taiwan";
 
             // 如果有特殊的編碼在database後面請加上;CharSet=編碼, utf8請使用utf8_general_ci
