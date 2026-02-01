@@ -1,23 +1,12 @@
-﻿using HtmlAgilityPack;
-using Serilog;
-using System;
-using System.Collections.Generic;
+﻿using Serilog;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace GameDetail
 {
@@ -28,7 +17,13 @@ namespace GameDetail
     {
         private static string myDate = "";
         private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
+        private readonly DispatcherTimer _timer;
+        //int invTime = 15;
+        
+        //public string _club_name = "";
+        //public int _club_id = 0;
 
+        int reflash_countdown = 30;
         public MainWindow()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -53,11 +48,7 @@ namespace GameDetail
             comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
             comboBox_date.SelectedIndex = 0;
 
-            comboBox_club.Items.Add("台南迎勝");
-            comboBox_club.Items.Add("屏東青田(春)");
-            comboBox_club.SelectedIndex = 0;
-
-            
+           
             comboBox_dispsn.Items.Add("3");
             comboBox_dispsn.Items.Add("4");
             comboBox_dispsn.Items.Add("5");
@@ -74,72 +65,197 @@ namespace GameDetail
             Btn_Load.Foreground = Brushes.Blue;
 
             Txt_memberNo.Text = "";
-        }
+            Txt_InvTime.Text = "";
+            Txt_AlertTime.Text = "";
 
-        private void disp(string msg)
-        {
-            this.Dispatcher.Invoke(() =>
+            _timer = new DispatcherTimer
             {
-                
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            _timer.Tick += Timer_Tick;
+            
+            this.Show();
+
+            login loginWindow = new login();
+            bool? result = loginWindow.ShowDialog();
+            if (result == true)
+            {
+                // 子視窗回傳的資料
+                Setting.ClubName = loginWindow.Club_name;
+                Setting.ClubID = loginWindow.Club_id;
+                // 更新 UI
+                Lbl_Club.Content = Setting.ClubName;
+            }
+
+            objPigeon_Dovecote objDovecote = new objPigeon_Dovecote();
+            objDovecote.LoadDovecote(Setting.ClubID);
+
+            if (Setting.ClubID == 102) //迎勝
+            {
+                Btn_Topigeon_Click(null, null);
+                Txt_AlertTime.Text = "220"; // 5
+                Txt_InvTime.Text = "225";   //10
+                Setting.InvTime = 125;
+                Setting.AlertTime = 120;
+            }
+            else if(Setting.ClubID == 91)
+            {
+                Txt_AlertTime.Text = "10";
+                Txt_InvTime.Text = "15";
+                Setting.InvTime = 15;
+                Setting.AlertTime = 10;
+            }
+            else
+            {
+                Txt_AlertTime.Text = "10";
+                Txt_InvTime.Text = "15";
+                Setting.InvTime = 15;
+                Setting.AlertTime = 10;
+            }
+
+            //Task.Run(() =>
+            //{
+            //    while (true)
+            //    {
+            //        objAlertSMS objAlert = new objAlertSMS();
+            //        objAlert.SendSMSfromAlertSMS();
+            //        System.Threading.Thread.Sleep(10000); // 每10秒檢查一次
+            //    }
+            //});
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if (Setting.PopMessage_queue.Count > 0)
+                    {
+                        PopupMessage();
+                    }
+                    System.Threading.Thread.Sleep(500); // 每0.5秒檢查一次
+                }
             });
         }
 
-        private void Btn_Cookie_Click(object sender, RoutedEventArgs e)
+        private void PopupMessage()
+        {             
+            Dispatcher.Invoke(() =>
+            {
+                while (Setting.PopMessage_queue.Count > 0)
+                {
+                    string msg = Setting.PopMessage_queue.Dequeue();
+                    ShowToast(msg);
+                    Task.Delay(100).Wait();
+                }
+            });
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
         {
-            //var handler = new HttpClientHandler
-            //{
-            //    UseCookies = true,
-            //    CookieContainer = new CookieContainer()
-            //};
 
-            //var client = new HttpClient(handler);
+            if (CheckBox_AutoLoad.IsChecked == true)
+            {
+                reflash_countdown--;
+                Lbl_ReflashCountdown.Content = $"自動刷新倒數 {reflash_countdown}";
+                if(reflash_countdown <= 0)
+                {
+                    reflash_countdown = 30;
+                    Load_Record();
+                }
+                //Load_Record();
+            }
+            
+        }
 
-            //// 送出登入或一般請求
-            //var response = client.GetAsync("http://www.087780212.tw/msg/login_pre.asp").Result;
+        private void Load_Record()
+        {
+            myDate = comboBox_date.Text;
+            
 
-            //// 抓 Cookie
-            //var cookies = handler.CookieContainer.GetCookies(new Uri("http://www.087780212.tw"));
-            ////mycookie = cookies["ASPSESSIONIDQQQQRACD"].Value;
-            //foreach (Cookie c in cookies)
-            //{
-            //    mycookie= c.Name;
-            //    //mycookie_v= c.Value;
-            //    Listbox_Log.Items.Add($"{c.Name} = {c.Value}");
-            //}
+            int serial2 = int.Parse(comboBox_dispsn.Text);
+            string club_name = Lbl_Club.Content.ToString();
+            string member_no = Txt_memberNo.Text.Trim();
 
-            //Txt_CookieName.Text = mycookie;
-            //mycookie_v = Txt_CookieValue.Text;
+            objRacingRecordF1 objRacing = new objRacingRecordF1();
+            if (Setting.ClubID == 102)
+            {
+                myRecord = objRacing.Read(myDate, serial2, Setting.ClubID, member_no, Setting.InvTime);
+            }
+            else
+            {
+                myRecord = objRacing.Read2(myDate, serial2, Setting.ClubID, member_no, Setting.InvTime);
+            }
+            Lbl_Message.Content = $"{myDate} {club_name} 前 {serial2} 名 資料筆數 {myRecord.Count}";
+            listView_record.ItemsSource = myRecord;
         }
 
         private void Btn_Clean_Click(object sender, RoutedEventArgs e)
         {
             myRecord.Clear();
             Lbl_Message.Content = "";
+            Txt_memberNo.Text = "";
         }
 
         private void Btn_Load_Click(object sender, RoutedEventArgs e)
         {
-            myDate = comboBox_date.Text;
-            int serial3 = int.Parse ( comboBox_dispsn.Text);
-            string club_name = comboBox_club.Text;
-            string member_no = Txt_memberNo.Text.Trim();
+            if (int.TryParse(Txt_InvTime.Text.Trim(), out int it))
+            {
+                Setting.InvTime = it;
+            }
+            else
+            {
+                MessageBox.Show("請輸入正確的倒數時間(秒)");
+                return;
+            }
 
-            objRacingRecordF1 objRacing = new objRacingRecordF1();
-            myRecord = objRacing.Read(myDate, serial3, club_name, member_no);
-            Lbl_Message.Content = $"{myDate} {club_name} 前 {serial3} 名 資料筆數 {myRecord.Count}";
-            listView_record.ItemsSource = myRecord;
+            if (int.TryParse(Txt_AlertTime.Text.Trim(), out int it2))
+            {
+                Setting.AlertTime = it2;
+            }
+            else
+            {
+                MessageBox.Show("請輸入正確的警示時間(秒)");
+                return;
+            }
+
+            reflash_countdown = 30;
+            //if (CheckBox_AutoLoad.IsChecked == true)
+            //{
+            //    Btn_Load.IsEnabled = false;
+            //    comboBox_club.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    Btn_Load.IsEnabled = true;
+            //    comboBox_club.IsEnabled = true;
+            //}
+
+            Load_Record();
+            _timer.Start();
         }
 
         private void Btn_Topigeon_Click(object sender, RoutedEventArgs e)
         {
-            topigeon_Load topigeonWindow = new topigeon_Load();
-            topigeonWindow.Show();
+            //topigeon_Load topigeonWindow = new topigeon_Load();
+            //topigeonWindow.Show();
+
+            if (topigeon_Load.Instance == null)
+            {
+                var win = new topigeon_Load();
+                win.Closed += (s, e2) => topigeon_Load.Instance = null;
+                win.Show();
+                win.Owner = this;
+            }
+            else
+            {
+                topigeon_Load.Instance.Activate();   // 已存在 → bring to front
+            }
+
         }
 
         private void Btn_ld_Click(object sender, RoutedEventArgs e)
         {
-            ld_Load ld_Load = new ld_Load();
-            ld_Load.Show();
+            //ld_Load ld_Load = new ld_Load();
+            //ld_Load.Show();
         }
 
         private void MemberNo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -153,6 +269,46 @@ namespace GameDetail
             //MessageBox.Show("你點了：" + tb.Text);
 
             Txt_memberNo.Text = tb.Text;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Setting.AutoLoadRecord = false;
+        }
+
+        private void CheckBox_AutoLoad_Checked(object sender, RoutedEventArgs e)
+        {
+
+                //Btn_Load.IsEnabled = false;
+                //comboBox_club.IsEnabled = false;
+
+        }
+
+        private void CheckBox_AutoLoad_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //Btn_Load.IsEnabled = true;
+            //comboBox_club.IsEnabled = true;
+        }
+
+        private void Btn_TestSMS_Click(object sender, RoutedEventArgs e)
+        {
+            utility _u = new utility();
+            _u.SendSms("0975637910", "來自【青田信鴿】的提醒，環號0123456鴿環，還未感應第二鴿鐘。");
+            ShowToast("SMS已經送出！");
+
+        }
+
+        public async void ShowToast(string msg)
+        {
+            ToastText.Text = msg;
+
+            var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
+            Toast.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+
+            await Task.Delay(2000);
+
+            var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
+            Toast.BeginAnimation(UIElement.OpacityProperty, fadeOut);
         }
     }
 }

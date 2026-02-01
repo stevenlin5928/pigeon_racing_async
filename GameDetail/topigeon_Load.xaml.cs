@@ -35,6 +35,7 @@ namespace GameDetail
         private static int member_count = 0;
         int record_count; // db 中已存在的資料筆數
         List<string> _list = new List<string>();
+        public static topigeon_Load Instance = null;
 
         public topigeon_Load()
         {
@@ -45,6 +46,10 @@ namespace GameDetail
             comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
             comboBox_date.SelectedIndex = 0;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Show();
+
+            Btn_Async_Click(null, null);
+            Instance = this;
         }
         private void disp(string msg)
         {
@@ -54,32 +59,50 @@ namespace GameDetail
             });
         }
 
+        public void LoadRecord()
+        {
+            Btn_Async_Click(null, null);
+        }
+
         private void Btn_Async_Click(object sender, RoutedEventArgs e)
         {
+            this.WindowState = WindowState.Minimized;
+            Btn_Async.IsEnabled = false;
+
+            Setting.AutoLoadRecord = true;
+
             myDate = comboBox_date.Text;
             record_count = 0;
             objRacingRecordF1 objRacing = new objRacingRecordF1();
             record_count = objRacing.GetRecordCount(myDate, "台南迎勝");
             disp(myDate + " 已有 " + record_count + " 筆資料");
 
-            Task.Run(() =>
+            Task.Run(async () =>
             {
-                disp("開始讀取比賽資料...");
-
-                procHtml(1, true);
-                int start_index = (record_count / 1000) + 1;
-                int stop_index = (pigeon_count / 1000) + 1;
-                //int total_pages = (int)Math.Ceiling((double)pigeon_count / 1000);
-                for (int index = start_index; index <= stop_index; index++)
+                while(Setting.AutoLoadRecord == true)
                 {
-                    Thread.Sleep(3000);
-                    procHtml(index, false);
-                }
+                    disp($"{DateTime.Now.ToString("HH:mm:ss").ToString()}開始讀取比賽資料...");
 
-                disp("讀取比賽資料結束...");
+                    procHtml(1, true);
+                    int start_index = (record_count / 1000) + 1;
+                    int stop_index = (pigeon_count / 1000) + 1;
+                    //int total_pages = (int)Math.Ceiling((double)pigeon_count / 1000);
+                    for (int index = start_index; index <= stop_index; index++)
+                    {
+                        Thread.Sleep(3000);
+                        procHtml(index, false);
+                    }
+
+                    disp($"{DateTime.Now.ToString("HH:mm:ss").ToString()}讀取比賽資料結束...");
+
+                    await Task.Delay(60000); // 每分鐘執行一次
+                    //Listbox_log.Items.Clear();
+                }
+                
 
             });
 
+            
         }
 
         private void procHtml(int page_index, bool isCalPage)
@@ -166,19 +189,35 @@ namespace GameDetail
                 {
                     daoRacingRecordF1 record = new daoRacingRecordF1();
 
-                    record.Serialno2 = int.Parse(tds[0].InnerText.Trim());
-                    record.Serialno3 = int.Parse(tds[1].InnerText.Trim());
-                    record.Serialno1 = 0;
+                    record.Serialno1 = int.Parse(tds[0].InnerText.Trim());
+                    record.Serialno2 = int.Parse(tds[1].InnerText.Trim());
+                    //record.Serialno1 = 0;
                     record.ClubName = "台南迎勝";
                     record.MemberNo = tds[2].InnerText.Trim();
-                    record.RingId = int.Parse(tds[3].InnerText.Trim());
-                    record.RacingDate = myDate;
-                    record.ArrivedDatetime = tds[4].InnerText.Trim();
+                    record.RingId = tds[3].InnerText.Trim();
+                    record.RacingDate = DateTime.ParseExact(myDate, "yyyy/MM/dd", null);
+
+                    string strdt = $"{myDate} {tds[4].InnerText.Trim()}";
+
+                    if (DateTime.TryParseExact(
+                            strdt,
+                            "yyyy/MM/dd HH:mm:ss.fff",
+                            System.Globalization.CultureInfo.InvariantCulture,
+                            System.Globalization.DateTimeStyles.None,
+                            out DateTime dt))
+                    {
+                        // 成功
+                        record.ArrivedDatetime = dt;
+                    }
+                    else
+                    {
+                        // 格式錯誤
+                    }
 
                     if (record.Serialno2 < record_count)
                         continue;
 
-                    disp($"序: {record.Serialno1}, 順序: {record.Serialno2}, 序號2: {record.Serialno3}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +
+                    disp($"順序: {record.Serialno1}, 序號2: {record.Serialno2}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +
                         $"腳環號碼: {record.RingId}, 日期: {record.RacingDate}-{record.ArrivedDatetime}");
                     obj.AddRecord(record);
                 }
@@ -199,6 +238,11 @@ namespace GameDetail
 
             pigeon_count = int.Parse(s_count);
 
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Setting.AutoLoadRecord = false;
         }
     }
 }
