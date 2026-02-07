@@ -215,7 +215,7 @@ namespace GameDetail
             if(club_id == 91)//青田(春)
             {
                 vw_name = "pc.view_215_record";
-                club_name = "青田(春)";
+                club_name = "青田";
             }
             else if(club_id == 103)//佳冬民族
             {
@@ -262,12 +262,14 @@ namespace GameDetail
                         if (SendStatus == 0)
                         {
                             record.is_NotifySMS = false;
-                            record.str_NotifySMS = "";
+                            record.str_NotifySMS = "   未通知   ";
+                            record.NotifyColor = "Blue";
                         }
                         else
                         {
                             record.is_NotifySMS = true;
-                            record.str_NotifySMS = "已通知";
+                            record.str_NotifySMS = "   已通知   ";
+                            record.NotifyColor = "Red";
                         }
 
                         record.RacingDate = reader.GetDateTime(reader.GetOrdinal("ymd"));
@@ -330,7 +332,7 @@ namespace GameDetail
                                         sms.Racing_date = record.RacingDate;
                                         sms.SerialNo1 = record.Serialno1;
                                         sms.telephone = getTel(record.MemberNo);
-                                        sms.Message = $"來自【青田】您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
+                                        sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
                                         sms.SendStatus = 1;
                                         objSMS.Add(sms);
                                         record.is_NotifySMS = true;
@@ -356,6 +358,7 @@ namespace GameDetail
 
                     // 發送簡訊
                     objSMS.SaveAlertSMS();
+                    Setting.PopMessage_queue.Enqueue($"查詢{club_name}完成！");
                 }
             }
             catch (Exception e)

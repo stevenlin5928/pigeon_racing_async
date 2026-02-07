@@ -76,7 +76,10 @@ namespace GameDetail
             
             this.Show();
 
+            Lbl_Message.Content = "";
+
             login loginWindow = new login();
+            loginWindow.Topmost= true;
             bool? result = loginWindow.ShowDialog();
             if (result == true)
             {
@@ -93,10 +96,10 @@ namespace GameDetail
             if (Setting.ClubID == 102) //迎勝
             {
                 Btn_Topigeon_Click(null, null);
-                Txt_AlertTime.Text = "220"; // 5
-                Txt_InvTime.Text = "225";   //10
-                Setting.InvTime = 125;
-                Setting.AlertTime = 120;
+                Txt_AlertTime.Text = "5"; // 5
+                Txt_InvTime.Text = "10";   //10
+                Setting.InvTime = 5;
+                Setting.AlertTime = 10;
             }
             else if(Setting.ClubID == 91)
             {
@@ -105,23 +108,35 @@ namespace GameDetail
                 Setting.InvTime = 15;
                 Setting.AlertTime = 10;
             }
-            else
+            else if(Setting.ClubID == 103)
             {
                 Txt_AlertTime.Text = "10";
                 Txt_InvTime.Text = "15";
                 Setting.InvTime = 15;
                 Setting.AlertTime = 10;
             }
+            else
+            {
+                Btn_Load.IsEnabled = false;
+                Btn_Load.Foreground = Brushes.Gray;
+                Lbl_Message.Foreground = Brushes.Red;
+                Lbl_Message.Content = "沒有正確登入！";
+                return;
+            }
 
-            //Task.Run(() =>
-            //{
-            //    while (true)
-            //    {
-            //        objAlertSMS objAlert = new objAlertSMS();
-            //        objAlert.SendSMSfromAlertSMS();
-            //        System.Threading.Thread.Sleep(10000); // 每10秒檢查一次
-            //    }
-            //});
+            // Load SMS Services user & password
+            //Setting.LoadSMSSetting(Setting.ClubID.ToString("D3"));
+
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    objAlertSMS objAlert = new objAlertSMS();
+                    objAlert.SendSMSfromAlertSMS();
+                    System.Threading.Thread.Sleep(10000); // 每10秒檢查一次
+                }
+            });
 
             Task.Run(() =>
             {
@@ -217,6 +232,15 @@ namespace GameDetail
                 return;
             }
 
+            if (CheckBox_AutoSendSMS.IsChecked == true)
+            {
+                Setting.AutoSendSMS = true;
+            }
+            else
+            {
+                Setting.AutoSendSMS = false;
+            }
+
             reflash_countdown = 30;
             //if (CheckBox_AutoLoad.IsChecked == true)
             //{
@@ -309,6 +333,12 @@ namespace GameDetail
 
             var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
             Toast.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+        }
+
+        private void SendSms_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button).DataContext;
+
         }
     }
 }

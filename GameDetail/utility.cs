@@ -1,5 +1,6 @@
 ﻿
 using MySql.Data.MySqlClient;
+using OfficeOpenXml;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System.Data;
+using System.IO;
+
 
 namespace GameDetail
 {
@@ -65,32 +71,73 @@ namespace GameDetail
             return conn;
         }
 
-        public async void SendSms(string phone, string msg)
+        public async Task<string> SendSms(string phone, string msg)
         {
+            string result = "";
+
+            if (Setting.AutoSendSMS == false)
+            {
+                return "AutoSendSMS false!";
+            }
+
             try
             {
-                string username = "we55666";
-                string password = "78xwy16g19txke2";
-                string mobile = phone;
-                string message = msg;
+                //string username = "we55666";
+                //string password = "78xwy16g19txke2";
+                //string mobile = phone;
+                //string message = msg;
 
                 // .NET 6 / .NET Core 用這個
-                string encodedMessage = Uri.EscapeDataString(message);
+                string encodedMessage = Uri.EscapeDataString(msg);
 
                 string url =
-                    $"http://api.twsms.com/json/sms_send.php?username={username}&password={password}&mobile={mobile}&message={encodedMessage}";
+                    $"http://api.twsms.com/json/sms_send.php?username={Setting.SMS_USER}&password={Setting.SMS_PASS}&mobile={phone}&message={encodedMessage}";
 
                 using var client = new HttpClient();
-                string response = await client.GetStringAsync(url);
+                result = await client.GetStringAsync(url);
 
-                Console.WriteLine(response);
+                //Console.WriteLine(result);
 
             
             }
             catch (Exception ex)
             {
                 Log.Debug($"SMS 發送失敗: {ex.Message}");
+                result = "SMS 發送失敗";
+            }
+
+            return result;
+        }
+
+        public static void ExportToExcel(string filePath)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            using (var package = new ExcelPackage())
+            {
+                var ws = package.Workbook.Worksheets.Add("Report");
+
+                // 標題列
+                ws.Cells[1, 1].Value = "ID";
+                ws.Cells[1, 2].Value = "Name";
+                ws.Cells[1, 3].Value = "Score";
+
+                // 假資料
+                ws.Cells[2, 1].Value = 1;
+                ws.Cells[2, 2].Value = "Steven";
+                ws.Cells[2, 3].Value = 95;
+
+                ws.Cells[3, 1].Value = 2;
+                ws.Cells[3, 2].Value = "Mary";
+                ws.Cells[3, 3].Value = 88;
+
+                // 自動調整欄寬
+                ws.Cells.AutoFitColumns();
+
+                // 儲存
+                File.WriteAllBytes(filePath, package.GetAsByteArray());
             }
         }
+
     }
 }

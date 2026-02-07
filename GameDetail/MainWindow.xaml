@@ -13,8 +13,8 @@
             Padding="12"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Margin="0,20,20,0"
-            Opacity="0">
+            Margin="0,30,40,0"
+            Opacity="0" Width="109">
             <TextBlock x:Name="ToastText" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Foreground="Black"/>
         </Border>
 
@@ -161,7 +161,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="發送SMS" Width="100">
+                    <!--<GridViewColumn Header="發送SMS" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
@@ -169,7 +169,20 @@
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
+                    </GridViewColumn>-->
+                    <GridViewColumn Header="發送SMS" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding str_NotifySMS}"
+                                    Foreground="{Binding NotifyColor}"
+                                        FontSize="14" FontFamily="Arial Black" FontWeight="Bold"
+                                    Click="SendSms_Click"
+                                    Padding="4"
+                                    />      
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
 
                     <GridViewColumn Header="備註" Width="300">
                         <GridViewColumn.CellTemplate>
@@ -199,7 +212,7 @@
         <Label x:Name="Lbl_ReflashCountdown" Content="" HorizontalAlignment="Left" Margin="1328,17,0,0" VerticalAlignment="Top" Height="75" Width="260" FontSize="24" FontFamily="Arial Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
         <CheckBox x:Name="CheckBox_AutoSendSMS" Content="自動發送SMS" HorizontalAlignment="Left" Margin="1114,80,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black"/>
-        <Button x:Name="Btn_TestSMS" Content="測試SMS" HorizontalAlignment="Left" Margin="1810,67,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_TestSMS_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_TestSMS" Content="測試SMS"  HorizontalAlignment="Left" Margin="1648,11,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_TestSMS_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         
     </Grid>
 </Window>

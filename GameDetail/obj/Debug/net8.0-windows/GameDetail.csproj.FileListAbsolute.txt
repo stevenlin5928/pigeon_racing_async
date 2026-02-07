@@ -131,3 +131,14 @@ D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\topigeon_Load.
 D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\topigeon_Load.baml
 D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\login.g.cs
 D:\Github\pigeon_racing_async\GameDetail\obj\Debug\net8.0-windows\login.baml
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\EPPlus.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\EPPlus.Interfaces.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Github\pigeon_racing_async\GameDetail\bin\Debug\net8.0-windows\System.Security.Cryptography.Xml.dll

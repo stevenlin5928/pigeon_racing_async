@@ -30,12 +30,29 @@ namespace GameDetail
             comboBox_club.Items.Add("091-屏東青田(春)");
             comboBox_club.Items.Add("103-佳冬民族");
             comboBox_club.SelectedIndex = 0;
+
+            Txt_Pwd.Text = "";
+            Lbl_Msg.Content = "";
+
         }
 
         private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
+            Lbl_Msg.Content = "";
+            int _club_id = int.Parse(comboBox_club.Text.Substring(0, 3));
+
+
+            Setting.LoadSMSSetting(_club_id.ToString("D3"));
+            if(Setting.SMS_USER != Txt_Pwd.Text)
+            {
+                
+                Lbl_Msg.Foreground = Brushes.Red;
+                Lbl_Msg.Content = "密碼錯誤";
+                return;
+            }
+
             Club_name = comboBox_club.Text.Substring(4);
-            Club_id = int.Parse( comboBox_club.Text.Substring(0,3) );
+            Club_id = int.Parse(comboBox_club.Text.Substring(0, 3));
             DialogResult = true;   // 會自動關閉視窗
 
         }

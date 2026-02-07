@@ -53,15 +53,16 @@ namespace GameDetail
             }
         }
 
-        public void SendSMSfromAlertSMS()
+        public async void SendSMSfromAlertSMS()
         {
             List<daoAlertSMS> _alertsms = new List<daoAlertSMS>();
+            utility util = new utility();
 
             LoadAlertSMS();
             foreach (var dao in _Load_alertsms)
             {
-                utility util = new utility();
-                util.SendSms(dao.telephone, "測試訊息：" + dao.Message);
+                
+                String result = await util.SendSms(dao.telephone, "測試訊息：" + dao.Message);
                 Thread.Sleep(100); // 避免短時間內發送過多簡訊
 
                 dao.SendStatus = 9; // 已發送

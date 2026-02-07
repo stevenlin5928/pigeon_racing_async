@@ -5,3 +5,18 @@
 佳冬民族
 賬戶：jiadong
 密碼：jiadong123*-;!
+
+台灣簡訊＿TWSMS API資訊
+
+青田（10分鐘提醒）
+帳號：5609
+API密碼：40ph3212mdx364c
+
+迎勝（5分鐘提醒）
+帳號：winner1102
+API密碼：7xxkeo646tlbts5
+
+(emoji)
+青山民族（本季不開通提醒功能）
+帳號:：hengmeng85
+API密碼:：l970df92q5j1vxk
