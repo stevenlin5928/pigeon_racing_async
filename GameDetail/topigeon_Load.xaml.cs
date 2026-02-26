@@ -41,12 +41,18 @@ namespace GameDetail
         {
             InitializeComponent();
 
-            comboBox_date.Items.Add(DateTime.Today.ToString("yyyy/MM/dd"));
-            comboBox_date.Items.Add(DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd"));
-            comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd"));
+            //string today = DateTime.Today.ToString("yyyy/MM/dd");
+            //string today = DateTime.Today.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+            comboBox_date.Items.Add(DateTime.Today.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture));
+            comboBox_date.Items.Add(DateTime.Today.AddDays(-1).ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture));
+            comboBox_date.Items.Add(DateTime.Today.AddDays(-2).ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture));
+
+
+
             comboBox_date.SelectedIndex = 0;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Show();
+            
 
             Btn_Async_Click(null, null);
             Instance = this;

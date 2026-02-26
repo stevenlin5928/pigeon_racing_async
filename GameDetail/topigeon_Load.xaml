@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="Btn_Async" Content="同步資料" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="32" Width="89" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Click="Btn_Async_Click"/>
         <ListBox x:Name="Listbox_log"  Margin="10,47,10,10"/>
-        <ComboBox x:Name="comboBox_date" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" Width="120" Height="32" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBox_date" IsTextSearchEnabled="False" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" Width="120" Height="32" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Window>

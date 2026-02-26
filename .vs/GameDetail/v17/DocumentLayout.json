@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\Github\\pigeon_racing_async\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\topigeon_load.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\topigeon_load.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,20 +23,28 @@
       "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\daoalertsms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\dao_vw_feetno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\dao_vw_feetno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\daoracingrecordf1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\daoracingrecordf1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\daopigeon_dovecote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\daopigeon_dovecote.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\topigeon_load.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\topigeon_load.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|d:\\github\\pigeon_racing_async\\gamedetail\\dao_vw_feetno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{911B4565-3E14-4E63-8B92-7FBE0A62B982}|GameDetail\\GameDetail.csproj|solutionrelative:gamedetail\\dao_vw_feetno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,59 +54,87 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "utility.cs",
-              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\utility.cs",
-              "RelativeDocumentMoniker": "GameDetail\\utility.cs",
-              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\utility.cs",
-              "RelativeToolTip": "GameDetail\\utility.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAywG4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "topigeon_Load.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\topigeon_Load.xaml.cs",
+              "RelativeDocumentMoniker": "GameDetail\\topigeon_Load.xaml.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\topigeon_Load.xaml.cs",
+              "RelativeToolTip": "GameDetail\\topigeon_Load.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T02:05:28.591Z"
+              "WhenOpened": "2026-02-25T10:31:36.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "topigeon_Load.xaml",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\topigeon_Load.xaml",
+              "RelativeDocumentMoniker": "GameDetail\\topigeon_Load.xaml",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\topigeon_Load.xaml",
+              "RelativeToolTip": "GameDetail\\topigeon_Load.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-25T10:31:22.266Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Setting.cs",
-              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\Setting.cs",
-              "RelativeDocumentMoniker": "GameDetail\\Setting.cs",
-              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\Setting.cs",
-              "RelativeToolTip": "GameDetail\\Setting.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAABoAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T07:51:35.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "daoPigeon_Dovecote.cs",
-              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoPigeon_Dovecote.cs",
-              "RelativeDocumentMoniker": "GameDetail\\daoPigeon_Dovecote.cs",
-              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoPigeon_Dovecote.cs",
-              "RelativeToolTip": "GameDetail\\daoPigeon_Dovecote.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T07:04:06.401Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "daoAlertSMS.cs",
               "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoAlertSMS.cs",
               "RelativeDocumentMoniker": "GameDetail\\daoAlertSMS.cs",
               "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoAlertSMS.cs",
               "RelativeToolTip": "GameDetail\\daoAlertSMS.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAADwvzwAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-31T17:43:15.018Z"
+              "WhenOpened": "2026-02-21T09:29:30.596Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "GameDetail\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
+              "RelativeToolTip": "GameDetail\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAGYBAAAAAAAAAAAjwKMBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T09:29:12.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "daoRacingRecordF1.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
+              "RelativeDocumentMoniker": "GameDetail\\daoRacingRecordF1.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
+              "RelativeToolTip": "GameDetail\\daoRacingRecordF1.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAmwH4AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T09:03:12.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Setting.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\Setting.cs",
+              "RelativeDocumentMoniker": "GameDetail\\Setting.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\Setting.cs",
+              "RelativeToolTip": "GameDetail\\Setting.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-01T07:51:35.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "dao_vw_feetno.cs",
               "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\dao_vw_feetno.cs",
               "RelativeDocumentMoniker": "GameDetail\\dao_vw_feetno.cs",
@@ -114,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml",
               "RelativeDocumentMoniker": "GameDetail\\MainWindow.xaml",
@@ -126,44 +158,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "daoRacingRecordF1.cs",
-              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
-              "RelativeDocumentMoniker": "GameDetail\\daoRacingRecordF1.cs",
-              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\daoRacingRecordF1.cs",
-              "RelativeToolTip": "GameDetail\\daoRacingRecordF1.cs",
-              "ViewState": "AgIAAAEBAAAAAAAAAAAAAA8BAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-24T09:07:25.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "login.xaml.cs",
               "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\login.xaml.cs",
               "RelativeDocumentMoniker": "GameDetail\\login.xaml.cs",
               "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\login.xaml.cs",
               "RelativeToolTip": "GameDetail\\login.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwDwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-02T11:57:32.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-02T11:57:32.989Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "GameDetail\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\MainWindow.xaml.cs",
-              "RelativeToolTip": "GameDetail\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAgwE4AAAAlAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\App.xaml.cs",
+              "RelativeDocumentMoniker": "GameDetail\\App.xaml.cs",
+              "ToolTip": "D:\\Github\\pigeon_racing_async\\GameDetail\\App.xaml.cs",
+              "RelativeToolTip": "GameDetail\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T17:17:01.744Z"
+              "WhenOpened": "2026-02-21T07:45:00.924Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "login.xaml",
               "DocumentMoniker": "D:\\Github\\pigeon_racing_async\\GameDetail\\login.xaml",
               "RelativeDocumentMoniker": "GameDetail\\login.xaml",

@@ -23,6 +23,7 @@ namespace GameDetail
 
         public static string SMS_USER = "";
         public static string SMS_PASS = "";
+        public static string SMS_DEBUG_PHONE = "";
 
         public static void LoadSMSSetting(string club_id)
         {
@@ -47,6 +48,10 @@ namespace GameDetail
                     else if(key == $"sms_{club_id}_pwd")
                     {
                         SMS_PASS = value;
+                    }
+                    else if (key == $"sms_{club_id}_debug_phone")
+                    {
+                        SMS_DEBUG_PHONE = value;
                     }
                 }
             }

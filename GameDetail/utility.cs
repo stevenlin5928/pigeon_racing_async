@@ -71,11 +71,12 @@ namespace GameDetail
             return conn;
         }
 
-        public async Task<string> SendSms(string phone, string msg)
+        //public async Task<string> SendSms(string phone, string msg)
+        public string SendSms(string phone, string msg, bool DirSMS = false)
         {
             string result = "";
 
-            if (Setting.AutoSendSMS == false)
+            if (Setting.AutoSendSMS == false && DirSMS == false)
             {
                 return "AutoSendSMS false!";
             }
@@ -87,18 +88,28 @@ namespace GameDetail
                 //string mobile = phone;
                 //string message = msg;
 
-                // .NET 6 / .NET Core 用這個
+                // ---Test---
+                //phone = "0980562285";
+
                 string encodedMessage = Uri.EscapeDataString(msg);
 
                 string url =
                     $"http://api.twsms.com/json/sms_send.php?username={Setting.SMS_USER}&password={Setting.SMS_PASS}&mobile={phone}&message={encodedMessage}";
 
                 using var client = new HttpClient();
-                result = await client.GetStringAsync(url);
-
+                result = client.GetStringAsync(url).Result;
+                if(result.Contains("Success"))
+                {
+                    result = "OK";
+                    Log.Debug($"SMS 發送成功: {phone} - {msg}");
+                }
+                else
+                {
+                    Log.Debug($"SMS 發送失敗: {result}");
+                }
                 //Console.WriteLine(result);
 
-            
+
             }
             catch (Exception ex)
             {

@@ -1,5 +1,8 @@
 ﻿using Serilog;
+using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +22,11 @@ namespace GameDetail
         private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
         private readonly DispatcherTimer _timer;
         //int invTime = 15;
-        
+
         //public string _club_name = "";
         //public int _club_id = 0;
+
+        
 
         int reflash_countdown = 30;
         public MainWindow()
@@ -132,6 +137,10 @@ namespace GameDetail
             {
                 while (true)
                 {
+                    Dispatcher.Invoke(() =>
+                    {
+                        Setting.AutoSendSMS = CheckBox_AutoSendSMS.IsChecked == true;
+                    });
                     objAlertSMS objAlert = new objAlertSMS();
                     objAlert.SendSMSfromAlertSMS();
                     System.Threading.Thread.Sleep(10000); // 每10秒檢查一次
@@ -166,6 +175,8 @@ namespace GameDetail
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
+
+            //Setting
 
             if (CheckBox_AutoLoad.IsChecked == true)
             {
@@ -317,7 +328,7 @@ namespace GameDetail
         private void Btn_TestSMS_Click(object sender, RoutedEventArgs e)
         {
             utility _u = new utility();
-            _u.SendSms("0975637910", "來自【青田信鴿】的提醒，環號0123456鴿環，還未感應第二鴿鐘。");
+            _u.SendSms("0975637910", "來自【青田信鴿】的提醒，環號0123456鴿環，還未感應第二鴿鐘。", true);
             ShowToast("SMS已經送出！");
 
         }
@@ -329,7 +340,7 @@ namespace GameDetail
             var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(300));
             Toast.BeginAnimation(UIElement.OpacityProperty, fadeIn);
 
-            await Task.Delay(2000);
+            await Task.Delay(4000);
 
             var fadeOut = new DoubleAnimation(1, 0, TimeSpan.FromMilliseconds(300));
             Toast.BeginAnimation(UIElement.OpacityProperty, fadeOut);
@@ -338,7 +349,85 @@ namespace GameDetail
         private void SendSms_Click(object sender, RoutedEventArgs e)
         {
             var item = (sender as Button).DataContext;
+            // 3.從 ListView 的 Items 找出 index
+            int index = listView_record.Items.IndexOf(item);
+            AddSMS(index);
 
+        }
+
+
+        public void AddSMS(int index)
+        {
+            daoRacingRecordF1 record = new daoRacingRecordF1();
+            record = myRecord[index];
+
+            objAlertSMS objSMS = new objAlertSMS();
+            daoAlertSMS sms = new daoAlertSMS();
+
+            sms.Racing_date = record.RacingDate;
+            sms.SerialNo1 = record.Serialno1;
+            sms.telephone = getTel(record.MemberNo);
+            sms.Message = $"來自【{record.ClubName}】提醒，您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
+            sms.SendStatus = 9;
+            
+            // 發送簡訊
+            
+            if(Setting.SMS_DEBUG_PHONE != "")
+            {
+                sms.telephone = Setting.SMS_DEBUG_PHONE;
+            }
+                
+            utility _u = new utility();
+            string r = _u.SendSms(sms.telephone, sms.Message, true);
+            if(r == "OK")
+            {
+                objSMS.Add(sms);
+                record.is_NotifySMS = true;
+                record.str_NotifySMS = "   已通知   ";
+                record.NotifyColor = "Red";
+                myRecord.RemoveAt(index);
+                myRecord.Insert(index, record); // 更新 ObservableCollection 中的資料，觸發 UI 更新
+                // 發送成功
+                objSMS.SaveAlertSMS();
+                ShowToast($"已對 {record.MemberNo}的{record.feet_no} 發送簡訊！");
+            }
+            else {
+                ShowToast($"{sms.telephone}-簡訊發送失敗！");
+            }
+
+        }
+        public string getTel(string dovecote_sn)
+        {
+            string telephone = "";
+            if (Setting._dovecote_list.ContainsKey(dovecote_sn))
+            {
+                telephone = Setting._dovecote_list[dovecote_sn].Telephone;
+            }
+            return telephone;
+        }
+
+        private void Btn_Export_Click(object sender, RoutedEventArgs e)
+        {
+            string folder = AppDomain.CurrentDomain.BaseDirectory;
+            string file = Path.Combine(folder, $"records_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.csv");
+
+            var lines = new List<string>();
+            lines.Add($"序號1,序號2,會員號,環號," +
+                    $"比賽日期," +
+                    $"第一套鴿鐘時間," +
+                    $"第二套鴿鐘時間,間隔時間");
+            foreach (var r in myRecord)
+            {
+                lines.Add($"{r.Serialno1},{r.Serialno2},會員號：{r.MemberNo},環號：{r.RingId}," +
+                    $"{r.RacingDate.ToString("yyyy-MM-dd")}," +
+                    $"{r.ArrivedDatetime.ToString("yyyy-MM-dd HH:mm:ss")}," +
+                    $"{r.FST?.ToString("yyyy-MM-dd HH:mm:ss")}," +
+                    $"{r.str_interval_minutes}");
+            }
+
+            File.WriteAllLines(file, lines, Encoding.UTF8);
+
+            ShowToast("檔案匯出完成！");
         }
     }
 }

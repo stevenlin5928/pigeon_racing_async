@@ -13,8 +13,8 @@
             Padding="12"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Margin="0,30,40,0"
-            Opacity="0" Width="109">
+            Margin="0,50,40,0"
+            Opacity="0" Width="232">
             <TextBlock x:Name="ToastText" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Foreground="Black"/>
         </Border>
 
@@ -27,7 +27,7 @@
         <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="960,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <Button x:Name="Btn_ld" Content="開啟嶺東" HorizontalAlignment="Left" Margin="1080,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_ld_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Visibility="Hidden"/>
         <Button x:Name="Btn_Cls" Content="清除畫面" HorizontalAlignment="Left" Margin="625,40,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
-
+        <Button x:Name="Btn_Export" Content="匯出記錄" HorizontalAlignment="Left" Margin="725,40,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Btn_Export_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <ListView x:Name="listView_record"  Margin="10,112,10,10" FontSize="16" Grid.ColumnSpan="2">
             <ListView.Resources>
                 <!-- 加入格線樣式 -->

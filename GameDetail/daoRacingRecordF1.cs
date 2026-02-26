@@ -103,12 +103,14 @@ namespace GameDetail
                         if (SendStatus == 0)
                         {
                             record.is_NotifySMS = false;
-                            record.str_NotifySMS = "";
+                            record.str_NotifySMS = "   未通知   ";
+                            record.NotifyColor = "Blue";
                         }
                         else
                         {
                             record.is_NotifySMS = true;
-                            record.str_NotifySMS = "已通知";
+                            record.str_NotifySMS = "   已通知   ";
+                            record.NotifyColor = "Red";
                         }
                             
 
@@ -161,7 +163,7 @@ namespace GameDetail
                                 if (_seconds < (Setting.AlertTime * 60))
                                 {
                                     // 發簡訊通知
-                                    if (record.is_NotifySMS == false)
+                                    if (record.is_NotifySMS == false && Setting.AutoSendSMS == true)
                                     {
                                         daoAlertSMS sms = new daoAlertSMS();
                                         sms.Racing_date = record.RacingDate;
@@ -326,7 +328,7 @@ namespace GameDetail
                                 if(_seconds < (Setting.AlertTime*60))
                                 {
                                     // 發簡訊通知
-                                    if (record.is_NotifySMS == false)
+                                    if (record.is_NotifySMS == false && Setting.AutoSendSMS == true)
                                     {
                                         daoAlertSMS sms = new daoAlertSMS();
                                         sms.Racing_date = record.RacingDate;
@@ -357,7 +359,7 @@ namespace GameDetail
                     }
 
                     // 發送簡訊
-                    objSMS.SaveAlertSMS();
+                    // objSMS.SaveAlertSMS();
                     Setting.PopMessage_queue.Enqueue($"查詢{club_name}完成！");
                 }
             }
