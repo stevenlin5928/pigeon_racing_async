@@ -220,7 +220,7 @@ namespace GameDetail
                         // 格式錯誤
                     }
 
-                    if (record.Serialno2 < record_count)
+                    if (record.Serialno1 < record_count)
                         continue;
 
                     disp($"順序: {record.Serialno1}, 序號2: {record.Serialno2}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +
@@ -248,7 +248,14 @@ namespace GameDetail
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Setting.AutoLoadRecord = false;
+            //Setting.AutoLoadRecord = false;
+            e.Cancel = true; // 取消關閉事件
+            this.WindowState = WindowState.Minimized; // 最小化窗口
+        }
+
+        private void Btn_CLS_Click(object sender, RoutedEventArgs e)
+        {
+            Listbox_log.Items.Clear();
         }
     }
 }

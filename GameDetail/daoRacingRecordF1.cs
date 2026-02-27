@@ -58,7 +58,7 @@ namespace GameDetail
             _reacrd_list.Add(record);
         }
 
-        public ObservableCollection<daoRacingRecordF1> Read(string RacingDate, int serial2, int club_id, string member_no, int _invtime)
+        public ObservableCollection<daoRacingRecordF1> Read(string RacingDate, int serial2, int club_id, string member_no)
         {
             _hid.Clear();
             objAlertSMS objSMS = new objAlertSMS();
@@ -149,13 +149,13 @@ namespace GameDetail
 
                         if (record.FST == null)
                         {
-                            DateTime add15Datetime = record.ArrivedDatetime.AddMinutes(_invtime);
+                            DateTime add15Datetime = record.ArrivedDatetime.AddMinutes(Setting.InvTime);
                             TimeSpan interval = add15Datetime - DateTime.Now;
                             int _seconds = (int)interval.TotalSeconds;
                             if (_seconds < 0)
                             {
                                 record.strcountdown_minutes = "  結束倒數";
-                                record.memo = $"超過 {_invtime} 分鐘感應第二套鴿鐘！";
+                                record.memo = $"超過 {Setting.InvTime} 分鐘感應第二套鴿鐘！";
                             }
                             else
                             {
@@ -169,7 +169,7 @@ namespace GameDetail
                                         sms.Racing_date = record.RacingDate;
                                         sms.SerialNo1 = record.Serialno1;
                                         sms.telephone = getTel(record.MemberNo.Substring(1));
-                                        sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
+                                        sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.InvTime - Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
                                         sms.SendStatus = 1;
                                         objSMS.Add(sms);
                                         record.is_NotifySMS = true;
@@ -179,9 +179,9 @@ namespace GameDetail
 
                         }
 
-                        if (record.interval_minutes > _invtime)
+                        else if (record.interval_minutes > Setting.InvTime*60)
                         {
-                            record.memo = $"超過 {_invtime} 分鐘";
+                            record.memo = $"超過 {Setting.InvTime} 分鐘";
                             record.memo = record.memo.PadRight(200);
                         }
 
@@ -207,7 +207,7 @@ namespace GameDetail
         //青田
         //佳冬民族
         //
-        public ObservableCollection<daoRacingRecordF1> Read2(string RacingDate, int serial2, int club_id, string member_no, int _invtime)
+        public ObservableCollection<daoRacingRecordF1> Read2(string RacingDate, int serial2, int club_id, string member_no)
         {
             objAlertSMS objSMS = new objAlertSMS();
 
@@ -312,14 +312,14 @@ namespace GameDetail
 
                         if(record.FST == null)
                         {
-                            DateTime add15Datetime = record.ArrivedDatetime.AddMinutes(_invtime);
+                            DateTime add15Datetime = record.ArrivedDatetime.AddMinutes(Setting.InvTime);
                             TimeSpan interval = add15Datetime - DateTime.Now;
                             int _seconds = (int)interval.TotalSeconds;
                             if (_seconds < 0)
                             {
                                 record.strcountdown_minutes = "結束倒數";
 
-                                record.memo = $"超過 {_invtime} 分鐘感應第二套鴿鐘！";
+                                record.memo = $"超過 {Setting.InvTime} 分鐘感應第二套鴿鐘！";
                                 record.memo = record.memo.PadRight(200);
                             }
                             else
@@ -334,7 +334,7 @@ namespace GameDetail
                                         sms.Racing_date = record.RacingDate;
                                         sms.SerialNo1 = record.Serialno1;
                                         sms.telephone = getTel(record.MemberNo);
-                                        sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
+                                        sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.InvTime-Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
                                         sms.SendStatus = 1;
                                         objSMS.Add(sms);
                                         record.is_NotifySMS = true;
@@ -343,10 +343,9 @@ namespace GameDetail
                             }
                             
                         }
-
-                        if(record.interval_minutes > _invtime*60)
+                        else if(record.interval_minutes > Setting.InvTime * 60)
                         {
-                            record.memo = $"超過 {_invtime} 分鐘";
+                            record.memo = $"超過 {Setting.InvTime} 分鐘";
                             record.memo=record.memo.PadRight(200);
                         }
 
@@ -359,7 +358,7 @@ namespace GameDetail
                     }
 
                     // 發送簡訊
-                    // objSMS.SaveAlertSMS();
+                    objSMS.SaveAlertSMS();
                     Setting.PopMessage_queue.Enqueue($"查詢{club_name}完成！");
                 }
             }

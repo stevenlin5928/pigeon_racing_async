@@ -32,7 +32,13 @@ namespace GameDetail
                 {
                     daoPigeon_Dovecote dao = new daoPigeon_Dovecote();
                     dao.Club_ID = reader.GetInt32(reader.GetOrdinal("club_id"));
+                    
                     dao.Dovecote_SN = reader.GetString(reader.GetOrdinal("dovecote_sn"));
+
+                    if (club_id == 102)
+                    {
+                        dao.Dovecote_SN = $"0{dao.Dovecote_SN}";
+                    }
                     dao.Telephone = reader.GetString(reader.GetOrdinal("dovecote_tel"));
                     Setting._dovecote_list.Add(dao.Dovecote_SN, dao);
                 }

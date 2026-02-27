@@ -21,13 +21,7 @@ namespace GameDetail
         private static string myDate = "";
         private ObservableCollection<daoRacingRecordF1> myRecord = new ObservableCollection<daoRacingRecordF1>();
         private readonly DispatcherTimer _timer;
-        //int invTime = 15;
-
-        //public string _club_name = "";
-        //public int _club_id = 0;
-
         
-
         int reflash_countdown = 30;
         public MainWindow()
         {
@@ -45,6 +39,8 @@ namespace GameDetail
                     ).CreateLogger();
 
             Log.Debug("程式開始");
+
+            Btn_TestSMS.Visibility = Visibility.Hidden;
 
             //utility u = new utility();
             //u.connectdb();
@@ -101,24 +97,24 @@ namespace GameDetail
             if (Setting.ClubID == 102) //迎勝
             {
                 Btn_Topigeon_Click(null, null);
-                Txt_AlertTime.Text = "5"; // 5
+                Txt_AlertTime.Text = "2"; // 5
                 Txt_InvTime.Text = "10";   //10
-                Setting.InvTime = 5;
-                Setting.AlertTime = 10;
+                Setting.InvTime = 10;
+                Setting.AlertTime = 2;
             }
             else if(Setting.ClubID == 91)
             {
-                Txt_AlertTime.Text = "10";
+                Txt_AlertTime.Text = "5";
                 Txt_InvTime.Text = "15";
                 Setting.InvTime = 15;
-                Setting.AlertTime = 10;
+                Setting.AlertTime = 5;
             }
             else if(Setting.ClubID == 103)
             {
-                Txt_AlertTime.Text = "10";
+                Txt_AlertTime.Text = "5";
                 Txt_InvTime.Text = "15";
                 Setting.InvTime = 15;
-                Setting.AlertTime = 10;
+                Setting.AlertTime = 5;
             }
             else
             {
@@ -204,11 +200,11 @@ namespace GameDetail
             objRacingRecordF1 objRacing = new objRacingRecordF1();
             if (Setting.ClubID == 102)
             {
-                myRecord = objRacing.Read(myDate, serial2, Setting.ClubID, member_no, Setting.InvTime);
+                myRecord = objRacing.Read(myDate, serial2, Setting.ClubID, member_no);
             }
             else
             {
-                myRecord = objRacing.Read2(myDate, serial2, Setting.ClubID, member_no, Setting.InvTime);
+                myRecord = objRacing.Read2(myDate, serial2, Setting.ClubID, member_no);
             }
             Lbl_Message.Content = $"{myDate} {club_name} 前 {serial2} 名 資料筆數 {myRecord.Count}";
             listView_record.ItemsSource = myRecord;
@@ -367,7 +363,7 @@ namespace GameDetail
             sms.Racing_date = record.RacingDate;
             sms.SerialNo1 = record.Serialno1;
             sms.telephone = getTel(record.MemberNo);
-            sms.Message = $"來自【{record.ClubName}】提醒，您的鴿子 {record.feet_no} 已超過 {Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
+            sms.Message = $"來自【{record.ClubName}】提醒，您的鴿子 {record.feet_no} 已超過 {Setting.InvTime-Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
             sms.SendStatus = 9;
             
             // 發送簡訊
@@ -418,7 +414,7 @@ namespace GameDetail
                     $"第二套鴿鐘時間,間隔時間");
             foreach (var r in myRecord)
             {
-                lines.Add($"{r.Serialno1},{r.Serialno2},會員號：{r.MemberNo},環號：{r.RingId}," +
+                lines.Add($"{r.Serialno1},{r.Serialno2},{r.MemberNo},{r.RingId}," +
                     $"{r.RacingDate.ToString("yyyy-MM-dd")}," +
                     $"{r.ArrivedDatetime.ToString("yyyy-MM-dd HH:mm:ss")}," +
                     $"{r.FST?.ToString("yyyy-MM-dd HH:mm:ss")}," +

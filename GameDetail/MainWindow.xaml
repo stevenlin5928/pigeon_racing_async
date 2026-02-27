@@ -203,9 +203,9 @@
         <Label Content="會員號" HorizontalAlignment="Left" Margin="510,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="107" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="Lbl_Message" Content="message"  HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="607" VerticalContentAlignment="Center"/>
         <CheckBox x:Name="CheckBox_AutoLoad" Content="自動更新" HorizontalAlignment="Left" Margin="150,17,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" Checked="CheckBox_AutoLoad_Checked" Unchecked="CheckBox_AutoLoad_Unchecked"/>
-        <TextBox x:Name="Txt_InvTime" HorizontalAlignment="Left" Margin="1114,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="94" Height="30"
+        <TextBox x:Name="Txt_InvTime" HorizontalAlignment="Left" Margin="1114,40,0,0" TextWrapping="Wrap" Text="InvTime" VerticalAlignment="Top" Width="94" Height="30"
                  VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="Txt_AlertTime" HorizontalAlignment="Left" Margin="1224,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="94" Height="30"
+        <TextBox x:Name="Txt_AlertTime" HorizontalAlignment="Left" Margin="1224,40,0,0" TextWrapping="Wrap" Text="AlertTime" VerticalAlignment="Top" Width="94" Height="30"
          VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" HorizontalContentAlignment="Center"/>
         <Label Content="倒數時間" HorizontalAlignment="Left" Margin="1114,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="94" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="警示時間" HorizontalAlignment="Left" Margin="1224,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial Black" FontWeight="Bold" Width="94" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>

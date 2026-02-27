@@ -41,8 +41,8 @@ namespace GameDetail
             {
                 foreach (var dao in _add_alertsms)
                 {
-                    sql = $"insert into pc.AlertSMS (Racing_date,SerialNo1,Tel,msg,SendStatus) values " +
-                          $"('{dao.Racing_date.ToString("yyyy-MM-dd")}',{dao.SerialNo1},'{dao.telephone}','{dao.Message}',{dao.SendStatus})";
+                    sql = $"insert into pc.AlertSMS (Racing_date,SerialNo1,Tel,msg,SendStatus,club_id) values " +
+                          $"('{dao.Racing_date.ToString("yyyy-MM-dd")}',{dao.SerialNo1},'{dao.telephone}','{dao.Message}',{dao.SendStatus},{Setting.ClubID})";
                     using var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
@@ -68,7 +68,12 @@ namespace GameDetail
                 dao.SendStatus = 9; // 已發送
 
                 //Setting.PopMessage_queue.Enqueue($"已發送簡訊至 {dao.telephone}");
-                _alertsms.Add(dao);
+
+                if(result == "OK")
+                {
+                    _alertsms.Add(dao);
+                }
+                
             }
 
             UpdateAlertSMS(_alertsms);
@@ -83,7 +88,7 @@ namespace GameDetail
             using var conn = util.connectdb();
             try
             {
-                sql = $"select * from pc.AlertSMS where SendStatus=1";
+                sql = $"select * from pc.AlertSMS where SendStatus=1 and club_id={Setting.ClubID}";
                 using var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
                 using var reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -113,7 +118,7 @@ namespace GameDetail
                 foreach (var dao in _list)
                 {
                     sql = $"update pc.AlertSMS set SendStatus={dao.SendStatus} " +
-                          $"where Racing_date='{dao.Racing_date.ToString("yyyy-MM-dd")}' and SerialNo1={dao.SerialNo1} and Tel='{dao.telephone}'";
+                          $"where Racing_date='{dao.Racing_date.ToString("yyyy-MM-dd")}' and SerialNo1={dao.SerialNo1} and Tel='{dao.telephone}' and club_id={Setting.ClubID}";
                     using var cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                 }
