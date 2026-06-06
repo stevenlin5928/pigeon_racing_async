@@ -128,6 +128,16 @@ namespace GameDetail
             // Load SMS Services user & password
             //Setting.LoadSMSSetting(Setting.ClubID.ToString("D3"));
 
+            if(Setting.RaceMode == "train")
+            {
+                comboBox_dispsn.SelectedIndex = 0;
+                Lbl_Message.Content = $"{Setting.ClubName} 訓練模式，顯示前 3 名";
+            }
+            else
+            {
+                comboBox_dispsn.SelectedIndex = 1;
+                Lbl_Message.Content = $"{Setting.ClubName} 比賽模式，顯示前 4 名";
+            }
 
             Task.Run(() =>
             {
@@ -424,6 +434,12 @@ namespace GameDetail
             File.WriteAllLines(file, lines, Encoding.UTF8);
 
             ShowToast("檔案匯出完成！");
+        }
+
+        private void Btn_DeviceStatus_Click(object sender, RoutedEventArgs e)
+        {
+            ResetDevice resetDeviceWindow = new ResetDevice();
+            resetDeviceWindow.ShowDialog();
         }
     }
 }

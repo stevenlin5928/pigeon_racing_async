@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameDetail"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" Closing="Window_Closing">
+        Title="MainWindow 2026-6-5" Height="1080" Width="1920" Closing="Window_Closing">
     <Grid>
         <Border x:Name="Toast"
             Background="LawnGreen"
@@ -13,7 +13,7 @@
             Padding="12"
             HorizontalAlignment="Right"
             VerticalAlignment="Top"
-            Margin="0,50,40,0"
+            Margin="0,60,30,0"
             Opacity="0" Width="232">
             <TextBlock x:Name="ToastText" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Foreground="Black"/>
         </Border>
@@ -24,10 +24,12 @@
         <TextBox x:Name="Txt_memberNo" HorizontalAlignment="Left" Margin="510,40,0,0" TextWrapping="Wrap" Text="會員號" VerticalAlignment="Top" Width="107" Height="30" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <ComboBox x:Name="comboBox_dispsn" HorizontalAlignment="Left" Margin="400,40,0,0" VerticalAlignment="Top" Width="100" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Height="30" VerticalContentAlignment="Center"/>
 
-        <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="960,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
-        <Button x:Name="Btn_ld" Content="開啟嶺東" HorizontalAlignment="Left" Margin="1080,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_ld_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" Visibility="Hidden"/>
+        
         <Button x:Name="Btn_Cls" Content="清除畫面" HorizontalAlignment="Left" Margin="625,40,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Btn_Clean_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
         <Button x:Name="Btn_Export" Content="匯出記錄" HorizontalAlignment="Left" Margin="725,40,0,0" VerticalAlignment="Top" Height="30" Width="95" Click="Btn_Export_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_Topigeon" Content="開啟鴿神" HorizontalAlignment="Left" Margin="825,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_Topigeon_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        <Button x:Name="Btn_OpenDeviceView" Content="鴿鐘連線狀態" HorizontalAlignment="Left" Margin="935,40,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="Btn_DeviceStatus_Click" FontSize="14" FontFamily="Arial Black" FontWeight="Bold"/>
+        
         <ListView x:Name="listView_record"  Margin="10,112,10,10" FontSize="16" Grid.ColumnSpan="2">
             <ListView.Resources>
                 <!-- 加入格線樣式 -->

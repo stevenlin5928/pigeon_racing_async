@@ -10,7 +10,7 @@ namespace GameDetail
     {
         public static bool AutoLoadRecord = false;
         public static bool TopPigeonStart = false;
-
+        public static string RaceMode = "";
         public static string ClubName = "";
         public static int ClubID = 0;
         public static int AlertTime = 0;

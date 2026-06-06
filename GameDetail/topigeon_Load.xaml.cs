@@ -80,24 +80,25 @@ namespace GameDetail
             myDate = comboBox_date.Text;
             record_count = 0;
             objRacingRecordF1 objRacing = new objRacingRecordF1();
-            record_count = objRacing.GetRecordCount(myDate, "台南迎勝");
-            disp(myDate + " 已有 " + record_count + " 筆資料");
+            
 
             Task.Run(async () =>
             {
                 while(Setting.AutoLoadRecord == true)
                 {
+                    record_count = objRacing.GetRecordCount(myDate, "台南迎勝");
+                    disp(myDate + " 已有 " + record_count + " 筆資料");
+
                     disp($"{DateTime.Now.ToString("HH:mm:ss").ToString()}開始讀取比賽資料...");
 
-                    procHtml(1, true);
-                    int start_index = (record_count / 1000) + 1;
-                    int stop_index = (pigeon_count / 1000) + 1;
-                    //int total_pages = (int)Math.Ceiling((double)pigeon_count / 1000);
-                    for (int index = start_index; index <= stop_index; index++)
-                    {
-                        Thread.Sleep(3000);
-                        procHtml(index, false);
-                    }
+                    procHtml(1, false);
+                    //int start_index = (record_count / 2000) + 1;
+                    //int stop_index = (pigeon_count / 2000) + 1;
+                    //for (int index = start_index; index <= stop_index; index++)
+                    //{
+                    //    Thread.Sleep(3000);
+                    //    procHtml(index, false);
+                    //}
 
                     disp($"{DateTime.Now.ToString("HH:mm:ss").ToString()}讀取比賽資料結束...");
 
@@ -114,7 +115,7 @@ namespace GameDetail
         private void procHtml(int page_index, bool isCalPage)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            int data_count = 1000;
+            int data_count = 2000;
             if (isCalPage == true)
             {
                 //計算頁數
@@ -122,7 +123,8 @@ namespace GameDetail
             }
 
 
-            var url = $"https://www.topigeon.com.tw/index.asp?QSysid=2501&QMode=train&QRaceDate={myDate}&qsize={data_count}&QSort=1";
+            //var url = $"https://www.topigeon.com.tw/index.asp?QSysid=2501&QMode=&QRaceDate={myDate}&qsize={data_count}&QSort=1";
+            var url = $"https://www.topigeon.com.tw/index.asp?QSysid=2501&QMode={Setting.RaceMode}&QRaceDate={myDate}&qsize={data_count}&QSort=1";
 
             // 建立 HttpClient + CookieContainer
             var handler = new HttpClientHandler
@@ -220,7 +222,7 @@ namespace GameDetail
                         // 格式錯誤
                     }
 
-                    if (record.Serialno1 < record_count)
+                    if (record.Serialno1 <= record_count)
                         continue;
 
                     disp($"順序: {record.Serialno1}, 序號2: {record.Serialno2}, 鴿會: {record.ClubName}, 會員: {record.MemberNo}, " +

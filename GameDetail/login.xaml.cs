@@ -31,6 +31,10 @@ namespace GameDetail
             comboBox_club.Items.Add("103-佳冬民族");
             comboBox_club.SelectedIndex = 0;
 
+            comboBox_made.Items.Add("自訓");
+            comboBox_made.Items.Add("比賽");
+            comboBox_made.SelectedIndex = 0;
+
             Txt_Pwd.Text = "";
             Lbl_Msg.Content = "";
 
@@ -49,6 +53,15 @@ namespace GameDetail
                 Lbl_Msg.Foreground = Brushes.Red;
                 Lbl_Msg.Content = "密碼錯誤";
                 return;
+            }
+
+            if(comboBox_made.SelectedIndex == 0)
+            {
+                Setting.RaceMode = "train";
+            }
+            else
+            {
+                Setting.RaceMode = "race";
             }
 
             Club_name = comboBox_club.Text.Substring(4);

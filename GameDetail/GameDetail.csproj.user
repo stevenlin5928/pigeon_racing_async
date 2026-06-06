@@ -5,6 +5,9 @@
     <Compile Update="login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ResetDevice.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="topigeon_Load.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

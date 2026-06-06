@@ -100,3 +100,5 @@ D:\Github\pigeon_racing_async\GameDetail\bin\Release\net8.0-windows\Microsoft.Ex
 D:\Github\pigeon_racing_async\GameDetail\bin\Release\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
 D:\Github\pigeon_racing_async\GameDetail\bin\Release\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
 D:\Github\pigeon_racing_async\GameDetail\bin\Release\net8.0-windows\System.Security.Cryptography.Xml.dll
+D:\Github\pigeon_racing_async\GameDetail\obj\Release\net8.0-windows\ResetDevice.g.cs
+D:\Github\pigeon_racing_async\GameDetail\obj\Release\net8.0-windows\ResetDevice.baml

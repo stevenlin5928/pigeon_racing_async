@@ -1,0 +1,102 @@
+﻿<Window x:Class="GameDetail.ResetDevice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameDetail"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="ResetDevice" Height="600" Width="1044">
+    <Grid>
+        <Button x:Name="Btn_Load_offline" Content="查詢離線鴿鐘" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.744,-0.819" Height="36" Width="100" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="Btn_Load_offline_Click"/>
+        <ListView x:Name="ListView_SIMInfo"  Margin="10,50,269,10" FontSize="14" FontWeight="Bold">
+            <ListView.Resources>
+                <!-- 加入格線樣式 -->
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+
+                <Style TargetType="ListViewItem">
+                    <Setter Property="BorderBrush" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="Padding" Value="5"/>
+                </Style>
+            </ListView.Resources>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="會員號" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Dovecote_sn}" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" TextWrapping="Wrap" Background="White" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="鴿鐘序列號" Width="180">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Device_UUID}" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" TextWrapping="Wrap" Background="White" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="SIM卡號" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ICCID}" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" TextWrapping="Wrap" Background="White" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="SIM IP" Width="160">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding IP}" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" TextWrapping="Wrap" Background="White" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="連線" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding str_is_online}" FontSize="14" FontFamily="Arial Black" FontWeight="Bold" TextWrapping="Wrap" Background="White" Foreground="Blue"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="動作" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="重啟"
+                                    Foreground="Blue"
+                                        FontSize="14" FontFamily="Arial Black" FontWeight="Bold"
+                                    Click="Reset_Click"
+                                    Padding="4"
+                                    />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="Lbl_Message" Content="Label" HorizontalAlignment="Left" Margin="375,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.413,-0.403" Height="35" Width="364" FontSize="14" FontFamily="Arial Black" VerticalContentAlignment="Center"/>
+        <ListBox x:Name="Listbox_log"  Margin="760,50,10,10"/>
+        <CheckBox x:Name="CheckBox_Online" Content="連線" HorizontalAlignment="Left" Margin="127,22,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" FontFamily="Arial Black"/>
+        <Button x:Name="Btn_Cls" Content="清除記錄" HorizontalAlignment="Left" Margin="760,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.744,-0.819" Height="36" Width="100" FontSize="14" FontWeight="Bold" FontFamily="Arial Black" Click="Btn_Cls_Click"/>
+
+    </Grid>
+</Window>

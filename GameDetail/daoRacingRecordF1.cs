@@ -129,12 +129,30 @@ namespace GameDetail
                         record.feet_no = SafeGetString(reader, "feet_no");
 
                         record.ArrivedDatetime = reader.GetDateTime(reader.GetOrdinal("arrived_datetime"));
-                        if(record.Serialno2 == 1)
-                            record.BgColor = Brushes.Yellow.ToString();
-
-                        if(record.ArrivedDatetime < record.FST && record.FST != null)
+                        if(Setting.RaceMode == "race") //比賽從第2隻開始算時間，訓練從第1隻開始算時間
                         {
-                            TimeSpan interval =  record.FST.Value- record.ArrivedDatetime;
+                            if (record.Serialno2 == 2)
+                                record.BgColor = Brushes.Yellow.ToString();
+                        }
+                        else
+                        {
+                            if (record.Serialno2 == 1)
+                                record.BgColor = Brushes.Yellow.ToString();
+                        }
+
+
+                        if (record.ArrivedDatetime < record.FST && record.FST != null && Setting.RaceMode=="train")
+                        {
+                            TimeSpan interval = record.FST.Value - record.ArrivedDatetime;
+                            //record.interval_minutes = (int)interval.TotalMinutes;
+                            record.interval_minutes = (int)interval.TotalSeconds;
+                            int _Minutes = record.interval_minutes / 60;
+                            int _Seconds = record.interval_minutes % 60;
+                            record.str_interval_minutes = $"{_Minutes}:{_Seconds}";
+                        }
+                        else if (record.FST != null && Setting.RaceMode == "race")
+                        {
+                            TimeSpan interval = record.FST.Value - record.ArrivedDatetime;
                             //record.interval_minutes = (int)interval.TotalMinutes;
                             record.interval_minutes = (int)interval.TotalSeconds;
                             int _Minutes = record.interval_minutes / 60;
@@ -290,10 +308,18 @@ namespace GameDetail
                         record.feet_no = record.RingId;
 
                         record.ArrivedDatetime = reader.GetDateTime(reader.GetOrdinal("f1_datetime"));
-                        if (record.Serialno2 == 1)
-                            record.BgColor = Brushes.Yellow.ToString();
+                        if (Setting.RaceMode == "race") //比賽從第2隻開始算時間，訓練從第1隻開始算時間
+                        {
+                            if (record.Serialno2 == 2)
+                                record.BgColor = Brushes.Yellow.ToString();
+                        }
+                        else
+                        {
+                            if (record.Serialno2 == 1)
+                                record.BgColor = Brushes.Yellow.ToString();
+                        }
 
-                        if (record.ArrivedDatetime < record.FST && record.FST != null)
+                        if (record.ArrivedDatetime < record.FST && record.FST != null && Setting.RaceMode == "train")
                         {
                             TimeSpan interval =  record.FST.Value- record.ArrivedDatetime;
                             //record.interval_minutes = (int)interval.TotalMinutes;
@@ -303,6 +329,17 @@ namespace GameDetail
                             int _Seconds = record.interval_minutes % 60;
                             record.str_interval_minutes = $"{_Minutes}分{_Seconds}秒";
                             record.strcountdown_minutes ="";
+                        }
+                        else if(record.FST != null && Setting.RaceMode == "race")
+                        {
+                            TimeSpan interval = record.FST.Value - record.ArrivedDatetime;
+                            //record.interval_minutes = (int)interval.TotalMinutes;
+                            int _seconds = (int)interval.TotalSeconds;
+                            record.interval_minutes = (int)interval.TotalSeconds;
+                            int _Minutes = record.interval_minutes / 60;
+                            int _Seconds = record.interval_minutes % 60;
+                            record.str_interval_minutes = $"{_Minutes}分{_Seconds}秒";
+                            record.strcountdown_minutes = "";
                         }
                         else
                         {
@@ -464,8 +501,8 @@ namespace GameDetail
                     Log.Debug("InsertRecord Error: " + ex.Message);
                 }
             }
-            
-            
+
+            _reacrd_list.Clear();
         }
     }
 

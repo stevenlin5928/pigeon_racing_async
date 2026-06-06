@@ -1,0 +1,112 @@
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    networks:
+     - kafka-net
+    ports:
+      - 2181:2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_ADMIN_ENABLE_SERVER: "false"
+    restart: always
+
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    networks:
+     - kafka-net
+    ports:
+      - 127.0.0.1:9092:9092
+    environment:
+        KAFKA_BROKER_ID: 1
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+        # 兩個 listener：一個給容器內部，一個給外部主機
+        KAFKA_LISTENERS: INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092
+        #KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://202.39.254.129:9092
+        KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://127.0.0.1:9092
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+        KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    restart: always
+
+  blazorapp:
+    build:
+      context: ./BlazorApp
+        #dockerfile: BlazorApp/Dockerfile
+    container_name: BlazorApp
+    networks:
+      - kafka-net
+    ports:
+      - 1080:1080
+    environment:
+      - ASPNETCORE_URLS=http://+:1080
+    restart: always
+  
+  webapi-producer:
+    build:
+      context: ./KafkaWebApi
+    container_name: Kafka-WebApi
+    networks:
+      - kafka-net
+    ports:
+      - 5000:5000
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      MYSQL_CONN: Server=db;Port=3306;User ID=root;Password=yhiot@2026;Database=pc;
+    restart: always
+    
+  kafka-consumer:
+    build:
+      context: ./ConsumerService
+    container_name: kafka-consumer
+    networks:
+      - kafka-net
+    depends_on:
+      - db
+      - kafka
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      MYSQL_CONN: Server=db;Port=3306;User ID=root;Password=yhiot@2026;Database=pc;
+    restart: always
+    
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8080:8080
+    networks:
+      - kafka-net
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local-kafka
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    restart: always
+
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: kafka-mysql
+    networks:
+      - kafka-net
+    ports:
+      - 13316:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: yhiot@2026
+      MYSQL_DATABASE: pc
+        - TZ=Asia/Taipei
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  db_data:
+  
+networks:
+  kafka-net:
+    driver: bridge
+  
