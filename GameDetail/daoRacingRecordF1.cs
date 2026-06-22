@@ -95,6 +95,10 @@ namespace GameDetail
                         record.Serialno2 = reader.GetInt32(reader.GetOrdinal("serialno2"));
                         record.ClubName = reader.GetString(reader.GetOrdinal("club_name"));
                         record.MemberNo= reader.GetString(reader.GetOrdinal("member_no"));
+
+                        //string ss = record.MemberNo.Substring(1);
+                        //string tt = getTel(record.MemberNo);
+
                         record.RingId = reader.GetString(reader.GetOrdinal("ring_id"));
                         int idx = reader.GetOrdinal("sendstatus");
                         int SendStatus = reader.IsDBNull(idx)
@@ -186,7 +190,8 @@ namespace GameDetail
                                         daoAlertSMS sms = new daoAlertSMS();
                                         sms.Racing_date = record.RacingDate;
                                         sms.SerialNo1 = record.Serialno1;
-                                        sms.telephone = getTel(record.MemberNo.Substring(1));
+                                        //sms.telephone = getTel(record.MemberNo.Substring(1)); 2026-6-20
+                                        sms.telephone = getTel(record.MemberNo);
                                         sms.Message = $"來自【{club_name}】您的鴿子 {record.feet_no} 已超過 {Setting.InvTime - Setting.AlertTime} 分鐘未感應第二套鴿鐘，請盡速感應！";
                                         sms.SendStatus = 1;
                                         objSMS.Add(sms);

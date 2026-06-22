@@ -1,0 +1,311 @@
+﻿2026-06-19 17:36:34.745 +08:00 [DBG] 程式開始
+2026-06-19 17:36:50.042 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:50.199 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:50.289 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:50.470 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:51.562 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:53.731 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:53.794 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:55.747 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:36:58.472 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:00.518 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:00.716 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:01.582 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:02.613 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:12.637 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:37:13.680 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:38:38.477 +08:00 [DBG] SMS 發送失敗: {"code":"00030","text":"ip not permission"}
+2026-06-19 17:38:38.499 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:38:39.537 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:38:43.794 +08:00 [DBG] InsertRecord Error: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding
+2026-06-19 17:38:43.809 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.824 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.838 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.855 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.870 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.885 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.899 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.913 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.928 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.944 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.958 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.973 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:43.988 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.004 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.018 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.033 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.048 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.063 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.080 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.095 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.109 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.123 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.137 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.152 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.211 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.228 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.244 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.260 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.274 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.291 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.307 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.321 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.336 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.350 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.364 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.378 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.392 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.406 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.422 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.441 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.460 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.476 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.492 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.512 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.531 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.550 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.568 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.586 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.602 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.619 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.636 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.653 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.670 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.687 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.703 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.721 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.738 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.754 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.772 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.791 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.806 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.822 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.837 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.852 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.868 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.884 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.899 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.915 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.931 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.949 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.965 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.981 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:44.996 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.012 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.027 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.043 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.058 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.073 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.088 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.104 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.119 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.134 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.149 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.166 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.181 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.198 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.213 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.228 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.244 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.259 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.275 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.291 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.309 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.327 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.343 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.358 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.373 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.390 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.404 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.419 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.434 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.449 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.463 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.478 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.493 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.509 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.525 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.539 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.556 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.571 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.587 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.604 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.619 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.635 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.649 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.664 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.679 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.695 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.710 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.725 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.740 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.755 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.770 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.784 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.801 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.819 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.840 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.859 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.878 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.897 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.915 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.933 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.953 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.972 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:45.990 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.007 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.025 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.045 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.062 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.080 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.097 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.112 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.128 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.145 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.160 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.176 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.192 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:46.207 +08:00 [DBG] InsertRecord Error: Connection must be valid and open.
+2026-06-19 17:38:49.557 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:38:50.594 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:00.615 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:01.649 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:11.669 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:12.705 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:22.724 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:23.758 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:33.779 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:34.818 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:44.839 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:45.874 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:46.230 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:49.426 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:49.483 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:55.896 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:39:56.927 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:06.948 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:07.981 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:18.001 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:19.037 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:29.058 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:30.092 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:40.115 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:41.149 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:51.168 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:51.301 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:52.223 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:53.672 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:40:53.723 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:09.814 +08:00 [DBG] SMS 發送失敗: {"code":"00030","text":"ip not permission"}
+2026-06-19 17:41:09.834 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:10.868 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:20.888 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:21.924 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:31.944 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:32.980 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:43.000 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:44.036 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:53.745 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:54.062 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:55.128 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:56.869 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:41:56.924 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:05.149 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:06.185 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:16.208 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:17.245 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:27.266 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:28.301 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:38.321 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:39.355 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:49.376 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:50.412 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:56.944 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:59.458 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:42:59.511 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:00.504 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:01.538 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:11.557 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:12.590 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:22.611 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:23.647 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:33.670 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:34.704 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:44.723 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:45.760 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:55.778 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:56.813 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:43:59.531 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:04.130 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:04.194 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:06.937 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:07.980 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:18.000 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:19.034 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:29.056 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:30.088 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:40.109 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:41.142 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:51.162 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:44:52.198 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:02.218 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:03.254 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:04.213 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:08.385 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:08.451 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:13.274 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:14.310 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:24.328 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:25.361 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:35.382 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:36.420 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:46.439 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:47.474 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:57.495 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:45:58.530 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:46:08.471 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:46:08.551 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:50:10.363 +08:00 [DBG] 程式開始
+2026-06-19 17:50:17.833 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:50:17.970 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:50:18.045 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:50:18.208 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:56:54.863 +08:00 [DBG] 程式開始
+2026-06-19 17:57:01.747 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:34.124 +08:00 [DBG] 程式開始
+2026-06-19 17:57:56.090 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:56.253 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:56.338 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:56.510 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:56.540 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:57.832 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:57:57.882 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 17:58:42.864 +08:00 [DBG] SMS 發送失敗: {"code":"00030","text":"ip not permission"}
+2026-06-19 18:07:08.579 +08:00 [DBG] 程式開始
+2026-06-19 18:07:18.161 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:23.084 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:23.132 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:23.209 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:23.379 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:23.414 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:24.483 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:24.536 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:27.281 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:27.339 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:33.435 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:33.467 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:43.488 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:43.518 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:53.540 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:07:53.571 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:08:12.325 +08:00 [DBG] SMS 發送失敗: {"code":"00030","text":"ip not permission"}
+2026-06-19 18:08:15.222 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:08:15.252 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:16.249 +08:00 [DBG] 程式開始
+2026-06-19 18:22:23.763 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:23.905 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:23.984 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:24.146 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:24.177 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:25.113 +08:00 [DBG] 資料庫連線 ok!
+2026-06-19 18:22:25.172 +08:00 [DBG] 資料庫連線 ok!

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameDetail"
         mc:Ignorable="d"
-        Title="MainWindow 2026-6-5" Height="1080" Width="1920" Closing="Window_Closing">
+        Title="MainWindow 2026-6-20" Height="1080" Width="1920" Closing="Window_Closing">
     <Grid>
         <Border x:Name="Toast"
             Background="LawnGreen"
